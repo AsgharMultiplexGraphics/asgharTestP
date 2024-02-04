@@ -1,0 +1,51 @@
+    <%= form_with(model: friend, local:true) do |form| %>
+      <% if friend.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
+
+          <ul>
+            <% friend.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <div style= "margin-bottom:20px ;">
+      <div class="field form-group" >
+        <%# <%= form.label :first_name, style: "display: block" %> 
+        
+        <%= form.text_field :first_name, placeholder: "First Name" %>
+      </div>
+
+      <div class="field form-group">
+        <%# <%= form.label :last_name, style: "display: block" %> 
+        </br>
+        <%= form.text_field :last_name, placeholder: "Last Name" %>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label :email, style: "display: block" %>
+        <%= form.text_field :email %>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label :phone, style: "display: block" %>
+        <%= form.text_field :phone %>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label :twitter, style: "display: block" %>
+        <%= form.text_field :twitter %>
+      </div>
+      <br/>
+      <div class="field form-group">
+        <%# <%= form.label :twitter, style: "display: block" %> 
+        <%= form.number_field :user_id, id: :frient_user_id, value:current_user.id, type: :hidden %>
+      </div>
+      <%# <%= current_user.inspect %>
+    </div>
+
+      <div class= "actions" style="margin-left:45px;">
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
