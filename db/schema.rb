@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_02_211116) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_10_102709) do
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "friends", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -31,6 +38,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_02_211116) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "company_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "age"
+    t.string "gender"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

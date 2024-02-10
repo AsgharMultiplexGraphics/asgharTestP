@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :members
+  # get 'members/index'
+  # get 'members/create'
+  # get 'members/new'
+  # get 'members/edit'
+  # get 'members/update'
+  # get 'members/destroy'
+  
+  resources :companies
   devise_for :users, :controllers => {:migrations => "users/registrations"}
   resources :friends
  #get 'home/index'
