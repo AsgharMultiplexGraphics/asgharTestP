@@ -1,6 +1,51 @@
-<div>
-  <%= @member.name %>
+<%# <div><%= @member.name</div> %>
+<%# <div><%= @member.id</div> %> 
+<%# <%=@users.size %> 
+<div class="jumbotron">
+  <div class="card-body">
+    <h1 class="display-4">
+       <%= @member.name %>
+       
+    </h1>
+
+    <p class="lead"> User ID = <%= @member.id %></p>
+    <hr class= "my-4">
+    <%# <%= link_to "Edit", edit_friend_path(@friend),class:"btn btn-primary btn-lg",style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %>  
+    <%# <a href="#" class="btn btn-primary btn-lg" role="button">Button</a> %>
+  </div>
 </div>
-<div>
-  <%= @member.id %>
+<table class="table table-striped table-hover table-bordered" >
+  <thead class="table-dark">
+    <tr>
+      <%# <th>User Id</th> %>
+          <th>Name <%="\u{1F468}"%> </th>
+          <%# <th>Last name</th> %>
+          <th>Email <%="\u{2709}"%> </th>
+          <th >Age (years) <%="\u{1F483}"%> </th>
+          <th>Gender <%="\u{1F468}" "\u{1F469}"%> </th>      
+    </tr>
+  </thead>
+  <tr>
+      <td><%= @member.name %></td>
+      <td><%= @member.email %></td>
+      <td><%= @member.age %></td>
+      <td><%= @member.gender %></td>
+      
+    </tr> 
+</table>
+
+
+
+
+
+
+<div style= "display:inline-block";>
+  <%# <%= link_to "Edit", edit_member_path(user),class:"btn btn-primary",style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %> 
+  <%# <%= link_to "Delete", member_path(user), method: :delete, class: 'btn btn-danger'%>
+  <%= link_to "Back", members_path, class:"btn btn-secondary" ,style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %>
+  <%= button_to "Delete", member_path(@member), method: :delete, class:"btn btn-outline-danger", onclick: 'return confirm("Are you sure?");' %> 
+
+</div>
+<div style= "display:inline-block";>
+  <%# <%= button_to "Delete", @user, method: :delete, class:"btn btn-danger", onclick: 'return confirm("Are you sure?");' %> 
 </div>

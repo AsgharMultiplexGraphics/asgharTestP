@@ -53,12 +53,15 @@ class FriendsController < ApplicationController
   def destroy
     # @friend = Friend.find(params[:id])
     # @friend.destroy!
+
+    unless @friend.owner?
     begin
       @friend.destroy!
       flash[:notice] = "Friend was successfully deleted."
     rescue StandardError => e
       flash[:alert] = "An error occurred: #{e.message}"
     end
+  end
 
     # respond_to do |format|
     #   format.html { redirect_to friends_url, notice: "Friend was successfully deleted." }

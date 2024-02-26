@@ -29,7 +29,14 @@ class MembersController < ApplicationController
   def show
     @member = current_user.company.members.find(params[:id])
   end
+
   def destroy
+    @member = User.find(params[:id])
+    unless @member.owner?
+      if @member.destroy
+       redirect_to members_path
+      end
+  end
   end
 
   protected 

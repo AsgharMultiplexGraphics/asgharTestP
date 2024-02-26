@@ -1,2 +1,10 @@
 <h1>Members#update</h1>
 <p>Find me in app/views/members/update.html.erb</p>
+<div style= "display:inline-block;">
+<%= render "form", member: @member %>
+
+
+</div>
+<div style= "display:inline-block;">
+  <%= link_to "Back (users)", members_path, class: "btn btn-secondary",style: "display: inline-block;"%>
+</div>
