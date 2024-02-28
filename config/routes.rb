@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # get 'members/destroy'
   
   resources :companies
-  devise_for :users, :controllers => {:migrations => "users/registrations"}
+  devise_for :users#, :controllers => {:registrations => "users/registrations"}
   resources :friends
  #get 'home/index'
  get 'home/about'

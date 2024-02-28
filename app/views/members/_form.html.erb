@@ -54,6 +54,12 @@
         <%= form.label :gender, style: "display: block" %>
         <%= form.text_field :gender %>
       </div>
+
+ <div class="field form-group">
+        <%= form.label :role, style: "display: block" %>
+        <%= form.select :role, options_for_select(User.roles.keys, member.role) %>
+      </div>
+
       <br/>
     
       <%# <%= current_user.inspect %>

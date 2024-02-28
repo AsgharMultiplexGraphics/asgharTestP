@@ -1,4 +1,6 @@
 class MembersController < ApplicationController
+  before_action :require_admin 
+
   def index
     company=current_user.company
     @users = company.users
@@ -6,9 +8,16 @@ class MembersController < ApplicationController
 
   def create
     company = current_user.company 
-   if user=  company.users.create(member_params)
-    redirect_to member_path(user)
-   end
+    user= company.users.create(member_params)
+
+    if user.persisted?
+      user.member! if user.role.blank?
+      redirect_to member_path(user)
+    else
+      @member = user
+      flash[:notice] = "please fix the validation errors"
+      render :new
+    end
   end
 
   def new
@@ -26,6 +35,7 @@ class MembersController < ApplicationController
       redirect_to member_path(@member)
     end
   end
+
   def show
     @member = current_user.company.members.find(params[:id])
   end
@@ -41,6 +51,6 @@ class MembersController < ApplicationController
 
   protected 
   def member_params
-    params.require(:user).permit :email, :password, :first_name, :last_name, :age, :gender
+    params.require(:user).permit :role, :email, :password, :first_name, :last_name, :age, :gender
   end 
 end

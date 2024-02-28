@@ -35,9 +35,12 @@
         <%# <li class="nav-item">
           <%= link_to 'Add Friend', new_friend_path, class: "nav-link"%>
         <%# </li>  %>
+
+        <% if current_user.admin? %>
          <li class="nav-item">
           <%= link_to 'Add User',  new_member_path, class: "nav-link"%>
         </li>
+        <% end%>
         
         <li class="nav-item" >
           <%# <%= link_to 'Sign Out', destroy_user_session_path, method: :delete%> 
