@@ -3,7 +3,7 @@
  url, method = if member.new_record?
    [members_path, 'post']
  else 
- [member_path(member,'put')]
+    [member_path(member,'put')]
  end 
 
 
@@ -22,6 +22,7 @@
           </ul>
         </div>
       <% end %>
+
     <div style= "margin-bottom:20px ;">
       <div class="field form-group" >
         <%# <%= form.label :first_name, style: "display: block" %> 
