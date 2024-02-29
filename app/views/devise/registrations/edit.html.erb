@@ -1,49 +1,98 @@
-<h2>Edit Profile <% resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="main-wrapper">
+  <div class="account-content">
+    <div class="login-wrapper">
+      <div class="login-content">
+          <div class="login-userset">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+                <%# <div class="login-logo logo-normal">
+      <!--            <img src="assets/img/logo.png" alt="img">-->
+                  <%# <%= image_tag 'logo.jpg', width: 100 %> 
+                  <%# <h3>logo </h3> %>
+                <%# </div>  %>
+                  <%# <a href="index.html" class="login-logo logo-white">
+                    <img src="assets/img/logo-white.png" alt="">
 
-  <div class="field form-group">
-    <%# <%= f.label :email<br /> %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+                  </a> %>
+                <div class="login-userheading">
+                  <h3>Edit Your Profile <% resource_name.to_s.humanize %></h3>
+                  <%# <h4>Continue where you left off</h4> %>
+                </div>
+                <div class="field form-group">
+                  <%# <%= f.label :email<br /> %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
 
-  <div class="field form-group">
-    <%# <%= f.label :password %> 
-    <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" , placeholder:"password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+                <div class="field form-group">
+                  <%# <%= f.label :password %> 
+                  <i>(leave blank if you don't want to change it)</i><br />
+                  <%= f.password_field :password, autocomplete: "new-password" , placeholder:"password" %>
+                  <% if @minimum_password_length %>
+                    <br />
+                    <em><%= @minimum_password_length %> characters minimum</em>
+                  <% end %>
+                </div>
 
-  <div class="field form-group">
-    <%# <%= f.label :password_confirmation<br />  %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"password_confirmation" %>
-  </div>
+                <div class="field form-group">
+                  <%# <%= f.label :password_confirmation<br />  %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"password_confirmation" %>
+                </div>
 
-  <div class="field form-group">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-  </br>
-  <div class="actions" style="margin-down: 20px">
-    <%= f.submit "Update",class:"btn btn-primary" %>
-  </div>
-<% end %>
-</br>
-<div class="card" >
-  <div class="card-body">
-    <h3>Cancel my account</h3>
+                <div class="field form-group">
+                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                  <%= f.password_field :current_password, autocomplete: "current-password" %>
+                </div>
+                
+                <div class="actions" >
+                  <%= f.submit "Update",class:"btn btn-primary" %>
+                </div>
+              <% end %>
+              <br>
+              <div class="card" >
+                <div class="card-body">
+                  <h3>Cancel my account</h3>
 
-<div  style="display:inline-block"> <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete ,class:"btn btn-outline-danger" %></div>
+              <div  style="display:inline-block"> <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete ,class:"btn btn-outline-danger" %></div>
 
-<%= link_to "Back", :back ,class:"btn btn-dark" , style:"display:inline-block" %>
+              <%= link_to "Back", :back ,class:"btn btn-dark" , style:"display:inline-block" %>
+                </div>
+              </div>
+         
+              
+            
+            </div>
+          </div>
+           <div class="login-img">
+  <!--        <img src="assets/img/login.jpg" alt="img">-->
+          <%= image_tag 'edit.jpg' %>
+        </div>
+        </div>
+       
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 

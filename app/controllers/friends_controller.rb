@@ -1,10 +1,18 @@
 class FriendsController < ApplicationController
-  before_action :set_friend, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_friend, only: %i[show edit update destroy]
+  before_action :authenticate_user!
+  before_action :correct_user_or_admin, only: [:edit, :update, :destroy]
+  # before_action :set_friend, only: %i[ show edit update destroy ]
+  # before_action :authenticate_user!, except: [:index, :show]
+  # before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /friends or /friends.json
   def index
-    @friends = Friend.all
+  @members = User.where(role: 'member')
+  @admins = User.where(role: 'admin')
+  @member_f = @members.sum { |member| member.friends.size }
+  @admin_f = @admins.sum { |admin| admin.friends.size }
+  @total_f = @member_f + @admin_f
+    @friends = Friend.all 
   end
 
   # GET /friends/1 or /friends/1.json
@@ -51,32 +59,66 @@ class FriendsController < ApplicationController
 
   # DELETE /friends/1 or /friends/1.json
   def destroy
-    # @friend = Friend.find(params[:id])
-    # @friend.destroy!
-
-    unless @friend.owner?
-    begin
-      @friend.destroy!
+    if @friend.destroy
       flash[:notice] = "Friend was successfully deleted."
-    rescue StandardError => e
-      flash[:alert] = "An error occurred: #{e.message}"
+    else
+      flash[:alert] = "An error occurred while deleting the friend."
     end
+    redirect_to friends_url
   end
+  # def destroy
+  #   unless @friend.owner(current_user)
+  #     flash[:alert] = "You are not authorized to delete this friend."
+  #     redirect_to friends_path
+  #     return
+  #   end
+
+  #   begin
+  #     @friend.destroy!
+  #     flash[:notice] = "Friend was successfully deleted."
+  #   rescue StandardError => e
+  #     flash[:alert] = "An error occurred: #{e.message}"
+  #   end
+
+  #   respond_to do |format|
+  #     format.html { redirect_to friends_url }
+  #     format.json { head :no_content }
+  #   end
+  # end
+
+  # def destroy
+  #   # @friend = Friend.find(params[:id])
+  #   # @friend.destroy!
+
+  #   unless @friend.owner? 
+  #   begin
+  #     @friend.destroy!
+  #     flash[:notice] = "Friend was successfully deleted."
+  #   rescue StandardError => e
+  #     flash[:alert] = "An error occurred: #{e.message}"
+  #   end
+  # end
 
     # respond_to do |format|
     #   format.html { redirect_to friends_url, notice: "Friend was successfully deleted." }
     #   format.json { head :no_content }
-    respond_to do |format|
-      format.html { redirect_to friends_url }
-      format.json { head :no_content }
+  #   respond_to do |format|
+  #     format.html { redirect_to friends_url }
+  #     format.json { head :no_content }
+  #   end
+  # end
+  # def correct_user 
+  #   @friend = current_user.friends.find_by(id: params[:id])
+  #   redirect_to friends_path, notice: "Not Authorized To Edit" if @friend.nil?
+    
+  # end
+  private
+  def correct_user_or_admin
+    @friend = Friend.find(params[:id])
+    unless @friend.user == current_user || current_user.admin?
+      redirect_to friends_path, notice: "Not authorized to edit this friend."
     end
   end
-  def correct_user 
-    @friend = current_user.friends.find_by(id: params[:id])
-    redirect_to friends_path, notice: "Not Authorized To Edit" if @friend.nil?
-    
-  end
-  private
     # Use callbacks to share common setup or constraints between actions.
     def set_friend
       @friend = Friend.find(params[:id])

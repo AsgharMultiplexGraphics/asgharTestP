@@ -44,16 +44,6 @@
               </div>
 
               <div class="form-login">
-                <%# <%= form.label :email, style: "display: block" %> 
-                <%= form.text_field :email , placeholder: "Enter Email" %>
-              </div>
-
-              <div class="form-login">
-                <%# <%= form.label :password, style: "display: block" %> 
-                <%= form.text_field :password , placeholder: "Enter Password"%>
-              </div>
-
-              <div class="form-login">
                 <%# <%= form.label :age, style: "display: block" %> 
                 <%= form.text_field :age , placeholder: "Age"%>
               </div>
@@ -64,10 +54,7 @@
                 <%# <%= form.text_field :gender , placeholder: "Gender " %> 
               </div>
 
-              <div class="form-login">
-                <%= form.label :role %>
-                <%= form.select :role, options_for_select(User.roles.keys, member.role) %>
-              </div>
+              
             
               <%# <%= current_user.inspect %>
               <div class= "actions" style="display:inline-block;">

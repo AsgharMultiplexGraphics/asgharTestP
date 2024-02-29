@@ -29,7 +29,6 @@
     
     <tr>
       <%# <td><%= friend.user_id</td>  %>
-
       <td> <%=  link_to "#{friend.first_name} #{friend.last_name}" , friend%>
         <%# <%= friend.first_name %> 
         </td>
@@ -37,6 +36,13 @@
       <td><%= friend.email %></td>
       <td><%= friend.phone %></td>
       <td><%= friend.twitter %></td>
+      <% if friend.user.present? %>
+      <td><%= friend.user.email %></td>
+      <% else %>
+        <td>No associated user</td>
+      <% end %>
+      
+
       
   
 

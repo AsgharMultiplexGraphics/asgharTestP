@@ -9,12 +9,20 @@ class User < ApplicationRecord
   belongs_to :company, optional: true     
   
   after_create :after_create_hooks
+
   
+  
+  # enum gender: {
+  #   Male: 1,
+  #   Female:2 
+  # }
   enum role: {
     admin: 1,
     member: 2 
   }
-
+  def owner(current_user)
+    self== current_user
+  end
   def name
     "#{first_name} #{last_name}"
   end
