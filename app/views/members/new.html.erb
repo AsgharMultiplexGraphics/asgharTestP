@@ -1,9 +1,14 @@
-<h1>Add New friend</h1>
-<div style= "display:inline-block;">
+
+<div class="login-userheading">
+  <h3>Add New User</h3>
+  <%# <h4>Continue where you left off</h4> %>
+</div>
+
+<div style= "display:block;">
 <%= render "form", member: @member %>
-
-
 </div>
 <div style= "display:inline-block;">
-  <%= link_to "Back (users)", members_path, class: "btn btn-secondary",style: "display: inline-block;"%>
+  <%= link_to "Back (users)", members_path, class: "btn btn-secondary",style: "margin-left:45px; display: inline-block;"%>
 </div>
+
+

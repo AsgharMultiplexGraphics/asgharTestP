@@ -5,9 +5,7 @@
  else 
     [member_path(member,'put')]
  end 
-
-
- %>
+%>
 
 
     <%= form_with(model: member, url: url, method: method, local:true) do |form| %>
@@ -23,50 +21,71 @@
         </div>
       <% end %>
 
-    <div style= "margin-bottom:20px ;">
-      <div class="field form-group" >
-        <%# <%= form.label :first_name, style: "display: block" %> 
-        
-        <%= form.text_field :first_name, placeholder: "First Name" %>
-      </div>
+<div class="main-wrapper">
+  <div class="account-content">
+    <div class="login-wrapper">
+      <div class="login-content">
+          <div class="login-userset">
+                
+                  
+              <div style= "margin-bottom:20px ;">
+              <div class="form-login" >
+                <%# <%= form.label :first_name, style: "display: block" %> 
+                
+                <%= form.text_field :first_name, placeholder: "First Name" %>
+              </div>
 
-      <div class="field form-group">
-        <%# <%= form.label :last_name, style: "display: block" %> 
-        <br>
-        <%= form.text_field :last_name, placeholder: "Last Name" %>
-      </div>
+              <div class="form-login">
+                <%# <%= form.label :last_name, style: "display: block" %> 
+                <br>
+                <%= form.text_field :last_name, placeholder: "Last Name" %>
+              </div>
 
-      <div class="field form-group">
-        <%= form.label :email, style: "display: block" %>
-        <%= form.text_field :email %>
-      </div>
+              <div class="form-login">
+                <%# <%= form.label :email, style: "display: block" %> 
+                <%= form.text_field :email , placeholder: "Enter Email" %>
+              </div>
 
-      <div class="field form-group">
-        <%= form.label :password, style: "display: block" %>
-        <%= form.text_field :password %>
-      </div>
+              <div class="form-login">
+                <%# <%= form.label :password, style: "display: block" %> 
+                <%= form.text_field :password , placeholder: "Enter Password"%>
+              </div>
 
-      <div class="field form-group">
-        <%= form.label :age, style: "display: block" %>
-        <%= form.text_field :age %>
-      </div>
+              <div class="form-login">
+                <%# <%= form.label :age, style: "display: block" %> 
+                <%= form.text_field :age , placeholder: "Age"%>
+              </div>
 
-      <div class="field form-group">
-        <%= form.label :gender, style: "display: block" %>
-        <%= form.text_field :gender %>
-      </div>
+              <div class="form-login">
+                <%# <%= form.label :gender, style: "display: block" %> 
+                <%= form.text_field :gender , placeholder: "Gender " %>
+              </div>
 
- <div class="field form-group">
-        <%= form.label :role, style: "display: block" %>
-        <%= form.select :role, options_for_select(User.roles.keys, member.role) %>
-      </div>
+        <div class="form-login">
+                <%= form.label :role %>
+                <%= form.select :role, options_for_select(User.roles.keys, member.role) %>
+              </div>
 
-      <br/>
-    
-      <%# <%= current_user.inspect %>
+              <br/>
+            
+              <%# <%= current_user.inspect %>
+            </div>
+
+              <div class= "actions" style="display:inline-block;">
+                <%= form.submit class: "btn btn-primary" %>
+              </div>
+                      
+                
+            </div>
+          </div>
+           <div class="login-img">
+  <!--        <img src="assets/img/login.jpg" alt="img">-->
+          <%= image_tag 'friend.jpg' %>
+        </div>
+        </div>
+       
     </div>
-
-      <div class= "actions" style="margin-left:45px;">
-        <%= form.submit class: "btn btn-primary" %>
-      </div>
-    <% end %>
+  </div>
+</div>
+              
+<% end %>

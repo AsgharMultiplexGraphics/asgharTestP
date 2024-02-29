@@ -1,9 +1,6 @@
-<h1>Add New friend</h1>
-<div style= "display:inline-block;">
+
+<h3 style= "margin-left:35px">Add New friend</h3>
 <%= render "form", friend: @friend %>
+<br>
+<%= link_to "Back (Friend List)", friends_path, class: "btn btn-secondary", style:"margin-left:35px; display:inline-block;"%>
 
-
-</div>
-<div style= "display:inline-block;">
-  <%= link_to "Back (Friends)", friends_path, class: "btn btn-secondary",style: "display: inline-block;"%>
-</div>
