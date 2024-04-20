@@ -1,17 +1,19 @@
 <p style="color: green"><%= notice%></p>
 
 <% if user_signed_in? %>
-    <h1>Friend List</h1>
+    <h1>Customer List</h1>
     <% if current_user.email == "asghar@gmail.com"%>
-    <h5>Total Friends = <%= @total_f %></h5>
+    <h5>Total Customers = <%= @total_f %></h5>
     <%# <h5>Total Friends=<%=@friends.size</h5> %> 
     <% end %>
+    <%= link_to "New Customer", new_friend_path, class:"btn btn-success" %>
         <br><br>
         
     <table class="table table-striped table-hover table-bordered" >
       <thead class="table-light">
         <tr>
           <%# <th>User Id</th> %>
+          
           <th>Name <%="\u{1F468}"%> </th>
           <%# <th>Last name</th> %>
           <th>Email <%="\u{2709}"%> </th>
@@ -19,50 +21,65 @@
           <th>Twitter <%="\u{1F426}"%> </th>
           <th>User Name <%="\u{1F60E}"%> </th>
           <th>Action <%="\u{2764}"%> </th>
+         
+        <% if current_user.email == "asghar@gmail.com"%>
+         <th>Sr.No </th>
           
         </tr>
       </thead>      
       <div id="friends">
-        <% if current_user.email == "asghar@gmail.com"%>
+            <%no= 0%>
                 <% User.all.each do |user| %>
                     <% user.friends.each do |friend| %>
-
+                          <%no += 1%>
+                         
+                        
                           <%# <% if friend.user == current_user %>
                             <%= render friend %>
                             
                             <td >
                               <%# <%=  link_to "Show ", friend, class: "btn btn-outline-dark" %> 
                             <%# <button   class=""></button>   %>
-                            <%= button_to "Delete", friend, method: :delete, class:"btn btn-outline-danger", onclick: 'return confirm("Are you sure?");' %> 
+                            <%= button_to "Delete", friend, method: :delete, class:"btn btn-outline-danger btn-sm", onclick: 'return confirm("Are you sure?");' %> 
                             <%# <%= link_to "Edit", edit_friend_path(@friend),class:"btn btn-primary",style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %> 
                             <%# <%= friend.user_id %> 
                             </td>
+                              <td>
+                            <%=no%>
+                          </td>
                             </tr>
                           <%# <% end %> 
                     <% end %>
                   <% end %>
         
         <% else %> 
+        </tr>
+      </thead>      
+      <div id="friends">
               <% @friends.each do |friend| %>
+            
                   <% if friend.user == current_user %>
+
                         <%= render friend %>
                     
                         <td >
                           <%# <%=  link_to "Show ", friend, class: "btn btn-outline-dark" %> 
                         <%# <button   class=""></button>   %>
-                        <%= button_to "Delete", friend, method: :delete, class:"btn btn-outline-danger", onclick: 'return confirm("Are you sure?");' %> 
+                        <%= button_to "Delete", friend, method: :delete, class:"btn btn-outline-danger btn-sm", onclick: 'return confirm("Are you sure?");' %> 
                         <%# <%= link_to "Edit", edit_friend_path(@friend),class:"btn btn-primary",style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %> 
                         <%# <%= friend.user_id %> 
                         </td>
+                          
                         </tr>
                   <% end %>
               <% end %>
+           <% end %>
           
-        <% end %>
+      
       </div>
     </table>
 
-    <%= link_to "New friend", new_friend_path, class:"btn btn-success" %>
+    
     <%# <button  type="button" ></button>   %>
 <% else %>
   <h1>OOPs...! you are not loged in</h1>

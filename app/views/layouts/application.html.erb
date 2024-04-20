@@ -79,14 +79,14 @@
           <%= link_to 'About Us', home_about_path%>
         </li> 
         <li class="nav-item">
-           <%= link_to 'Friends', friends_path %>
+           <%= link_to 'Customers', friends_path %>
        </li> 
 
      
    
          </li>
         <li class="nav-item">
-          <%= link_to 'Add Friend', new_friend_path%>
+          <%= link_to 'Add Customer', new_friend_path%>
         </li>  
       
         
@@ -123,15 +123,16 @@
                   <div class="col p-5 flex-grow-1">
                      
                   <% elsif !current_user.admin?  %>
-                 <div class="container"  >>
+                 <div class="container"  >
                  <% end%>
                  <%else%>
-                    <div class="container"  >>
+                    <div class="container "  >
               <% end%>
                             
-               
+               <div style= "margin-bottom: 60px;">
                   
                      <%= render  'home/header'%>
+                     </div>
               <% if notice%>
               <%= render 'layouts/alerts'%>
               <% end %>
@@ -152,7 +153,7 @@
                       Author: Asghar Ali
                 </div>
                 <div class="card-body">
-                      <h5 class="card-title">Test Phase Application</h5>
+                      <h5 class="card-title">Final Year Project</h5>
                       <p class="card-text">This App has been developed under the supervision of <strong>Miss Saima Jamil</strong></p>
                       <p class="card-text">Special Thanks to <strong>Naveed Bhai</strong> for guidance and help</p>
                       <div  style= "display:inline-block">

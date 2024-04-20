@@ -20,7 +20,7 @@
       <% if current_user.email == "asghar@gmail.com"%>
       <th scope="col">User Email <%="\u{1F60E}"%></th>   
       <% end %>   
-      <th scope="col">Actions</th>
+      <th scope="col" colspan="2">Actions</th>
     </tr>
   </thead>
   <tbody class= "text-center">
@@ -36,13 +36,18 @@
       <td><%= user.role%></td>
       <td><%= user.email%></td>
       
-      <td>  
-      <%= link_to "View", member_path(user), class: 'btn btn-primary', style: "color: white;"%>
-        <%= link_to "Edit", edit_member_path(user), class: 'btn btn-secondary', style: "color: white;"%>
-         <%= button_to "Delete", member_path(user), method: :delete, class:"btn btn-outline-danger", onclick: 'return confirm("Are you sure?");' %>
+      <td >  
+        
+      <%= link_to "View", member_path(user), class: 'btn btn-primary btn-sm ', style: "color: white;"%>
+        <%= link_to "Edit", edit_member_path(user), class: 'btn btn-secondary btn-sm ', style: "color: white;"%>
+         
         <%# <%= button_to "Delete", user, method: :delete, class:"btn btn-outline-danger", onclick: 'return confirm("Are you sure?");'%>  
+    
 
       </td>
+      <td >
+      <%= button_to "Delete", member_path(user), method: :delete, class:"btn btn-outline-danger btn-sm mt-2", onclick: 'return confirm("Are you sure?");' %>
+       </td>
     </tr>
      <% end%> 
 <% else%>
