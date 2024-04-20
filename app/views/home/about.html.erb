@@ -1,5 +1,91 @@
+
+
+
+
+<div class="container">
 <br><br>
-<%= image_tag('about_me.jpg', alt: 'About Us Image',style:"max-width: 100%; hight: 200px; width:150px", class: "about_us") %>
-<h3><%= @about_me%></h3>
-<p>I am a software engineering student at Virtual Universty of Pakistan </p>
-<p>This is my test phase application </p>
+                        <%= image_tag('about_me.jpg', alt: 'About Us Image',style:"max-width: 100%; hight: 200px; width:150px", class: "about_us") %>
+                        <h3><%= @about_me%></h3>
+                        <p>I am a software engineering student at Virtual Universty of Pakistan </p>
+                        <p>This is my test phase application </p>
+
+
+
+                        <!-- Button to toggle calculator visibility -->
+                        <button id="toggleCalculator" >Toggle Calculator</button>
+
+                        <!-- Calculator form -->
+                        <div id="calculator" style="<%= cookies[:calculator_open]? 'display: block;' : 'display: none;' %>">
+                        <h1>Calculator</h1>
+
+                        <%= form_tag(home_about_path, method: :get) do %>
+                        <%= label_tag(:first_number, "Enter first number:") %>
+                        <%= text_field_tag(:first_number, params[:first_number]) %>
+
+                        <%= label_tag(:second_number, "Enter second number:") %>
+                        <%= text_field_tag(:second_number, params[:second_number]) %>
+
+                        <%= submit_tag("Add") %>
+                        <button id="clear">Clear Fields</button>
+                        <% end %>
+
+                        <% if @result.present? %>
+                        <h2>Result: <%= @first_number %> + <%= @second_number %> = <%= @result %></h2>
+                        <button id="close">Close Calculator</button>
+                        <% end %>
+
+
+                        <%# <script>
+                        // Function to toggle calculator visibility
+                        document.getElementById('toggleCalculator').addEventListener('click', function() {
+                            var calculator = document.getElementById('calculator');
+                            if (calculator.style.display === 'none') {
+                            calculator.style.display = 'block';
+                            } else {
+                            calculator.style.display = 'none';
+                            }
+                        });
+                        </script> %>
+                        <script>
+                        // Function to toggle calculator visibility
+                        document.getElementById('toggleCalculator').addEventListener('click', function() {
+                            var calculator = document.getElementById('calculator');
+                            if (calculator.style.display === 'none') {
+                            calculator.style.display = 'block';
+                            document.cookie = "calculator_open=false;" 
+                            } else {
+                            calculator.style.display = 'none';
+                            document.cookie = "calculator_open=true;"
+                            }
+                        });
+
+                        // Function to close calculator after seeing result
+                        document.getElementById('close').addEventListener('click', function() {
+                            var calculator = document.getElementById('calculator');
+                            calculator.style.display = 'none';
+                            document.cookie = "calculator_open=false";
+                        });
+                            // Function to clear calculator fields
+                        document.getElementById('clear').addEventListener('click', function() {
+                            document.getElementById('first_number').value = '';
+                            document.getElementById('second_number').value = '';
+                        });
+                        </script>
+
+
+
+
+
+
+
+ 
+</div>
+
+     
+
+
+
+
+
+
+

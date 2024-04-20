@@ -6367,6 +6367,7 @@ span.select2-container.select2-container--default.select2-container--open {
     left: 0;
 }
 
+
 .check:checked + .checktoggle:after {
     background-color: #fff;
     left: 100%;

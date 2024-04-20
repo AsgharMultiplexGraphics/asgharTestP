@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # get 'members/edit'
   # get 'members/update'
   # get 'members/destroy'
-  get 'members/profile', to: 'members#profile', as: :members_profile
+  
   resources :companies
   devise_for :users#, :controllers => {:registrations => "users/registrations"}
   resources :friends

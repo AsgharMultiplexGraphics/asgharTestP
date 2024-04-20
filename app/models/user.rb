@@ -18,7 +18,8 @@ class User < ApplicationRecord
   # }
   enum role: {
     admin: 1,
-    member: 2 
+    cashier: 2,
+    manager: 3 
   }
   def owner(current_user)
     self== current_user
@@ -30,7 +31,7 @@ class User < ApplicationRecord
   def after_create_hooks
     if company.blank?  
       admin!
-      create_company(owner: self, name: "#{email} comany")
+      create_company(owner: self, name: "#{email} company")
     end
   end
 end

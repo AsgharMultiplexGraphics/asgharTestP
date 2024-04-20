@@ -10,13 +10,16 @@
 
 <table class="table table-striped table-hover table-bordered">
   <thead class="table-secondary text-center" >
+   
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Name <%="\u{1F468}"%></th>
+      <th  scope="col"><span class= " fa fa-user"> Name </span></th>
       <th scope="col">Gender <%="\u{1F468}" "\u{1F469}"%></th>
       <th scope="col">age <%="\u{1F483}"%></th>
       <th scope="col">Role <%="\u{1F60E}"%></th> 
-      <th scope="col">User Email <%="\u{1F60E}"%></th>      
+      <% if current_user.email == "asghar@gmail.com"%>
+      <th scope="col">User Email <%="\u{1F60E}"%></th>   
+      <% end %>   
       <th scope="col">Actions</th>
     </tr>
   </thead>

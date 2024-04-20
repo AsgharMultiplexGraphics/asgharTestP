@@ -1,9 +1,22 @@
+<% if user_signed_in? && current_user.admin? %>
+              
+              <h1> POS FOR RETAIL AND SALES MANAGMENT </h1>
+              
+             <%else%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <%= link_to 'Prototype App', home_index_path, class: "navbar-brand"%>
+
     
-  
-    
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+      <%= link_to 'Dashboard', home_index_path, class: "navbar-brand"%>
+      <% elsif !current_user.admin? %>
+      <%= link_to 'Home', home_index_path, class: "navbar-brand"%>
+    <% end%>
+    <%else%>
+    <%= link_to 'Point of Sale', home_index_path, class: "navbar-brand"%>
+     <% end%>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,21 +30,21 @@
         </li> 
         <li class="nav-item">
            <%= link_to 'Friends', friends_path, class: "nav-link" %>
-       
+       </li> 
 <%# User Management%>
        <% if !user_signed_in? %>
         <li class="nav-item">
           <%= link_to 'Sign Up',  new_user_registration_path, class: "nav-link"%>
         </li>
         <li class="nav-item">
-          <%= link_to 'Sign In', new_user_session_path, class:"nav-item btn btn-primary"%>
+          <%= link_to 'Sign In', new_user_session_path, class:"btn btn-primary"%>
         </li>
         <% end %>
     <% if user_signed_in? %>
          </li>
         <li class="nav-item">
           <%= link_to 'Add Friend', new_friend_path, class: "nav-link"%>
-        </li> 
+        </li>  
         <% if !current_user.admin? %>
         <li class="nav-item" style="margin-left:10px">
           <%= link_to "Profile: #{current_user.id} \u{2740}   #{current_user.email} \u{2740}", root_path, class:"nav-item btn btn-outline-info" %>
@@ -49,11 +62,12 @@
           <%= link_to "Profile: #{current_user.id} \u{2740}   #{current_user.email} \u{2740}", edit_user_registration_path, class:"nav-item btn btn-outline-info" %>
         </li>
         <% end%>   
-      
+   
         
-      <li class="nav-item" style="margin-left:10px">
+      <li  style="margin-left:10px">
+
           <%# <%= link_to 'Sign Out', destroy_user_session_path, method: :delete%> 
-          <%= button_to "Sign Out", destroy_user_session_path, :method => 'delete', data:{turbo: "false"}, class:"nav-item btn btn-primary" %>
+          <%= button_to "Sign Out", destroy_user_session_path, :method => 'delete', data:{turbo: "false"}, class:"fas fa-sign-out-alt btn btn-primary mt-1 py-1", style: "color: #157347" %>
         </li>
       <%# <li class="nav-item">
         <%# <%= link_to "Profile", user_path(current_user) %>
@@ -89,3 +103,12 @@
     </div>
   </div>
 </nav>
+
+<% end %>
+
+<style>
+    .nav-item:hover {
+      background-color: #157347; /* Adjust background color as desired */
+      color: orange; /* Text color will now be applied */
+    }
+  </style>

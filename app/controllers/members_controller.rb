@@ -2,14 +2,17 @@ class MembersController < ApplicationController
   before_action :require_admin 
 
   def index
-    @members = User.where(role: 'member')
+   
   @admins = User.where(role: 'admin')
-  @total_users = @members.size + @admins.size
+  @cashiers = User.where(role: 'cashier')
+  @managers = User.where(role: 'manager')
+  @total_users =  @admins.size + @cashiers.size + @managers.size
     company=current_user.company
     @users = company.users
   end
 
   def create
+    
     company = current_user.company 
     user= company.users.create(member_params)
 
@@ -27,12 +30,7 @@ class MembersController < ApplicationController
     @member=User.new
 
   end
-  def profile
-    @member = current_user.company.members.find(params[:id])
-    if @member.profile(member_params)
-      redirect_to member_path(@member)
-    end
-  end
+  
   def edit
     if current_user.email == "asghar@gmail.com"
       @member = User.find(params[:id])
@@ -61,6 +59,7 @@ class MembersController < ApplicationController
       @member = User.find(params[:id])
     else
       @member = current_user.company.members.find(params[:id])
+      
     end
     # @member = current_user.company.members.find(params[:id])
   end

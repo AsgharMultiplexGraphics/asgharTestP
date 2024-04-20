@@ -7,11 +7,14 @@ class FriendsController < ApplicationController
   # before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /friends or /friends.json
   def index
-  @members = User.where(role: 'member')
-  @admins = User.where(role: 'admin')
-  @member_f = @members.sum { |member| member.friends.size }
+    @admins = User.where(role: 'admin')
+    @cashiers = User.where(role: 'cashier')
+    @managers = User.where(role: 'manager')
+  @cashier_f = @cashiers.sum { |cashier| cashier.friends.size }
+  @manager_f = @managers.sum { |manager| manager.friends.size }
   @admin_f = @admins.sum { |admin| admin.friends.size }
-  @total_f = @member_f + @admin_f
+
+  @total_f =  @cashier_f + @admin_f + @manager_f
     @friends = Friend.all 
   end
 
