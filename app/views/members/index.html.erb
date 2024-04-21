@@ -18,7 +18,8 @@
       <th scope="col">age <%="\u{1F483}"%></th>
       <th scope="col">Role <%="\u{1F60E}"%></th> 
       <% if current_user.email == "asghar@gmail.com"%>
-      <th scope="col">User Email <%="\u{1F60E}"%></th>   
+      <th scope="col">Added By <%="\u{1F60E}"%></th>  
+       
       <% end %>   
       <th scope="col" colspan="2">Actions</th>
     </tr>
@@ -34,9 +35,14 @@
       <td><%= user.gender%></td>
       <td><%= user.age%></td>
       <td><%= user.role%></td>
-      <td><%= user.email%></td>
-      
-      <td >  
+      <% if user.company.name.downcase.include? user.email.downcase  %>
+         <td>Company Owner</td>
+      <% elsif user.company.name.downcase.include? "asghar.ali@gmail.com" %>
+          <td>Super User</td>
+          <% else %>
+          <td><%= user.company.name%></td>
+      <% end %>
+        <td >  
         
       <%= link_to "View", member_path(user), class: 'btn btn-primary btn-sm ', style: "color: white;"%>
         <%= link_to "Edit", edit_member_path(user), class: 'btn btn-secondary btn-sm ', style: "color: white;"%>

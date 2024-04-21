@@ -68,3 +68,12 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+gem "rb-readline"
+gem "pg", "~> 1.1"
+gem 'ffi'
+#gem "font-awesome-sass", "~> 6.5.1"
+#gem 'sassc', '~> 2.4.0'
+
+gem "stripe", "~> 10.3"
+
+gem "pagy", "~> 6.2"

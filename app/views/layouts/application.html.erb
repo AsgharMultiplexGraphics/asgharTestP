@@ -24,7 +24,12 @@
               <% if current_user.admin? %>
                 <div class="container-fluid d-flex flex-row ">
                  
-                  <nav class="col-md-2 sticky-top bg-dark text-white flex-wrap overflow-auto border-end " style="height: 100%;">
+                  <nav class="  col-md-2 sticky-top bg-dark text-white flex-wrap overflow-auto border-end " style="height: 100%;">
+
+                  
+  
+ 
+
                     <div class="d-flex align-items-center justify-content-center flex-shrink-0 pt-2">
                       <%# <h1 class="text-md py-2 font-bold">POS System</h1> %>
                       <%= image_tag('logo.jpg', alt: 'About Us Image',style:"max-width: 100%; hight: 133px; width:100px", class: "logo") %>
@@ -42,6 +47,17 @@
                     <form class="d-flex" style="margin-bottom:10px">
                       <button class="btn btn-success"><%= link_to "Role: #{current_user.role} \u{1F466}"%></button>
                     </form>
+
+                    <%= link_to 'Home', home_index_path, class: "navbar-brand"%>
+                    <li class="nav-item">
+                      <%= link_to 'About Us', home_about_path%>
+                    </li> 
+        <li >   
+            <button id="navbar-toggler" style="display: <%= cookies[:open_menu] ? 'block' : 'none' %>;">
+                    <i class="fas fa-bars"></i> Product Management
+                  </button>
+            <div id="navbar" >
+                  <ul>
                      <li class="nav-item">
                       <i class="fas fa-shopping-cart"></i> Products
                     </li>
@@ -54,53 +70,78 @@
                     </li>
                     
                     <li class="nav-item">  
-                      <i class="fas fa-shipping-fast"></i> 
+                      <i class="fas fa-shipping-fast"></i> Delivery
                     </li>
-                   <li class="nav-item"> 
-                      <i class="fa fa-list mr-2"> product</i>
-                    </li>
+                   
+                    </ul>
+                       <script>
+                        // Function to toggle navbar visibility
+                        document.getElementById('navbar-toggler').addEventListener('click', function() {
+                          const toggleButton = document.getElementById('navbar');
+                          if (toggleButton.style.display === 'none') {
+                            toggleButton.style.display = 'block';
+                            document.cookie = "open_menu=true"; // Set cookie to true on open
+                          } else {
+                            toggleButton.style.display = 'none';
+                            document.cookie = "open_menu=false"; // Set cookie to false on close
+                          }
+                        });
+                      </script>
               
+                   </div>    
+             </li>
                    
 
                    
-
-                   
-
-
 
 
 
  
-        <%# <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li> %>
-        <%= link_to 'Home', home_index_path, class: "navbar-brand"%>
-        <li class="nav-item">
-          <%= link_to 'About Us', home_about_path%>
-        </li> 
-        <li class="nav-item">
-           <%= link_to 'Customers', friends_path %>
-       </li> 
 
-     
-   
-         </li>
-        <li class="nav-item">
-          <%= link_to 'Add Customer', new_friend_path%>
-        </li>  
-      
-        
-      
-        </li> 
-        <li class="nav-item">
-       <%= link_to "Users", members_path%>
-       </li> 
-         <li class="nav-item">
-          <%= link_to 'Add User',  new_member_path %>
+                    
+                            <%# <li class="nav-item">
+                              <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li> %>
+                            
+          <li >   
+            <button id="customer-toggler" style="padding-right:2px;display: <%= cookies[:open_menu] ? 'block' : 'none' %>;">
+                    <i class="fas fa-bars"></i> User Management
+                  </button>
+            <div id="customer" >
+                          <ul>
+                            <li class="nav-item">
+                              <%= link_to 'Customers', friends_path %>
+                          </li> 
+                            </li>
+                            <li class="nav-item">
+                              <%= link_to 'Add Customer', new_friend_path%>
+                            </li>  
+                            </li> 
+                            <li class="nav-item">
+                          <%= link_to "Users", members_path%>
+                          </li> 
+                            <li class="nav-item">
+                              <%= link_to 'Add User',  new_member_path %>
+                            </li>
+                            
+                          
+                      </ul>
+                       <script>
+                        // Function to toggle navbar visibility
+                        document.getElementById('customer-toggler').addEventListener('click', function() {
+                          const toggleButton = document.getElementById('customer');
+                          if (toggleButton.style.display === 'none') {
+                            toggleButton.style.display = 'block';
+                            document.cookie = "open_menu=true"; // Set cookie to true on open
+                          } else {
+                            toggleButton.style.display = 'none';
+                            document.cookie = "open_menu=false"; // Set cookie to false on close
+                          }
+                        });
+                      </script>
+              
+                   </div>    
         </li>
-        
-       
-   
         
       <li style="margin:15px">
 
@@ -181,6 +222,7 @@
 
 
     </div>
+  
   </body>
 </html>
 

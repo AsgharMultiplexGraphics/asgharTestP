@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+ .nav-item:hover {
+   background-color: #157347; /* Adjust background color as desired */
+   color: orange; /* Text color will now be applied */
+ }
+ .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .navbar-toggler {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  
