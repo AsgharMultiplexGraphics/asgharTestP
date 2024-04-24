@@ -1,77 +1,54 @@
-    
-    <%= form_with(model: friend, local:true) do |form| %>
-      <% if friend.errors.any? %>
-        <div style="color: red">
-          <h2><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
-
-          <ul>
-            <% friend.errors.each do |error| %>
-              <li><%= error.full_message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-
-
-
-<div class="main-wrapper" style="display:inline-block">
-  <div class="account-content">
-    <div class="login-wrapper">
-      <div class="login-content">
-          <div class="login-userset">
-                
-                  
-              
-              <div class="form-login" >
-                <%# <%= form.label :first_name, style: "display: block" %> 
-                
-                <%= form.text_field :first_name, placeholder: "First Name" %>
-              </div>
-
-              <div class="form-login">
-                <%# <%= form.label :last_name, style: "display: block" %> 
-                <br>
-                <%= form.text_field :last_name, placeholder: "Last Name" %>
-              </div>
-
-              <div class="form-login">
-                <%# <%= form.label :email, style: "display: block" %> 
-                <%= form.text_field :email , placeholder: "Enter Email" %>
-              </div>
-
-              <div class="form-login">
-                <%# <%= form.label :password, style: "display: block" %> 
-                <%= form.text_field :phone , placeholder: "Enter Phone"%>
-              </div>
-
-              <div class="form-login">
-                <%# <%= form.label :age, style: "display: block" %> 
-                <%= form.text_field :twitter , placeholder: "twitter"%>
-              </div>
-
-              <div class="form-login">
-                <%# <%= form.label :gender, style: "display: block" %> 
-               <%= form.number_field :user_id, id: :friend_user_id, value:current_user.id, type: :hidden %>
-              </div>
-
-             
-                
-            
-          </div>
-           
-      </div>
-       <div class="login-img">
-  <!--        <img src="assets/img/login.jpg" alt="img">-->
-          <%= image_tag 'friend.jpg' %>
-            </div>
-      
+<%= form_with(model: friend, local:true) do |form| %>
+  <% if friend.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
+      <ul>
+        <% friend.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
     </div>
-     <div class= "actions" >
+  <% end %>
+  <div class="main-wrapper" style="display:inline-block">
+    <div class="account-content">
+      <div class="login-wrapper">
+        <div class="login-content">
+          <div class="login-userset">
+            <div class="form-login" >
+              <%# <%= form.label :first_name, style: "display: block" %>
+              <%= form.text_field :first_name, placeholder: "First Name" %>
+            </div>
+            <div class="form-login">
+              <%# <%= form.label :last_name, style: "display: block" %>
+              <br>
+              <%= form.text_field :last_name, placeholder: "Last Name" %>
+            </div>
+            <div class="form-login">
+              <%# <%= form.label :email, style: "display: block" %>
+              <%= form.text_field :email , placeholder: "Enter Email" %>
+            </div>
+            <div class="form-login">
+              <%# <%= form.label :password, style: "display: block" %>
+              <%= form.text_field :phone , placeholder: "Enter Phone"%>
+            </div>
+            <div class="form-login">
+              <%# <%= form.label :age, style: "display: block" %>
+              <%= form.text_field :twitter , placeholder: "twitter"%>
+            </div>
+            <div class="form-login">
+              <%# <%= form.label :gender, style: "display: block" %>
+              <%= form.number_field :user_id, id: :friend_user_id, value:current_user.id, type: :hidden %>
+            </div>
+          </div>
+        </div>
+        <div class="login-img">
+          <!--        <img src="assets/img/login.jpg" alt="img">-->
+          <%= image_tag 'friend.jpg' %>
+        </div>
+      </div>
+      <div class= "actions" >
         <%= form.submit class: "btn btn-primary", style:"margin-left:35px; display:inline-block;" %>
       </div>
+    </div>
   </div>
-
-     
-</div>
-    <% end %>
+<% end %>

@@ -77,3 +77,4 @@ gem 'ffi'
 gem "stripe", "~> 10.3"
 
 gem "pagy", "~> 6.2"
+gem "image_processing", "~> 1.2"

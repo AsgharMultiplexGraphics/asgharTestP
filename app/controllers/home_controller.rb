@@ -10,9 +10,7 @@ class HomeController < ApplicationController
     # @first_number = params[:first_number].to_i
     # @second_number = params[:second_number].to_i
     # @result = sum(@first_number, @second_number)
-    # end
-    
-    
+    # end  
   end
 
   def about

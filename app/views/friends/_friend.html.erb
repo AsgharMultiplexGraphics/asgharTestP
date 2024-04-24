@@ -2,50 +2,35 @@
   <%# <p>
     <strong>First name:</strong>
     <%= friend.first_name %>
-  <%# </p> %> 
-
+  <%# </p> %>
   <%# <p>
     <strong>Last name:</strong>
     <%= friend.last_name %>
   <%# </p>  %>
-
   <%# <p>
     <strong>Email:</strong>
     <%= friend.email %>
-  <%# </p> %> 
-
+  <%# </p> %>
   <%# <p>
     <strong>Phone:</strong>
     <%= friend.phone %>
   <%# </p> %>
-
   <%# <p>
     <strong>Twitter:</strong>
     <%= friend.twitter %>
   <%# </p>  %>
-
-
- <tr>
-   
-    
-   
-      <%# <td><%= friend.user_id</td>  %>
-      <td> <%=  link_to "#{friend.first_name} #{friend.last_name}" , friend%>
-        <%# <%= friend.first_name %> 
-        </td>
-      <%# <td> <%= friend.last_name</td>   %>
-      <td><%= friend.email %></td>
-      <td><%= friend.phone %></td>
-      <td><%= friend.twitter %></td>
-      <% if friend.user.present? %>
+  <tr>
+    <%# <td><%= friend.user_id</td>  %>
+    <td> <%=  link_to "#{friend.first_name} #{friend.last_name}" , friend%>
+      <%# <%= friend.first_name %>
+    </td>
+    <%# <td> <%= friend.last_name</td>   %>
+    <td><%= friend.email %></td>
+    <td><%= friend.phone %></td>
+    <td><%= friend.twitter %></td>
+    <% if friend.user.present? %>
       <td><%= friend.user.email %></td>
-      <% else %>
-        <td>No associated user</td>
-      <% end %>
-      
-
-      
-  
-
-</div>
-
+    <% else %>
+      <td>No associated user</td>
+    <% end %>
+  </div>
