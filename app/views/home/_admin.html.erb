@@ -1,0 +1,80 @@
+<div class="container-fluid d-flex flex-row ">
+  <nav class="  col-md-2 sticky-top bg-dark text-white flex-wrap overflow-auto border-end " style="height: 42rem;">
+    <div class="d-flex align-items-center justify-content-center flex-shrink-0 pt-2">
+      <%# <h1 class="text-md py-2 font-bold">POS System</h1> %>
+      <%= image_tag('logo.jpg', alt: 'About Us Image',style:"max-width: 100%; hight: 133px; width:100px", class: "logo") %>
+    </div>
+    <div class = "dcenter">
+      <ul class="nav nav-pills flex-column mb-auto " style="margin:20px">
+        <li >
+          <%# <a class="nav-link active" href="#" style="margin-bottom:10px"><i class="fas fa-tachometer-alt"> Dashboard</i></a> %>
+          <%= link_to admin_path, class: "block px-1 py-2 hover:rounded hover:bg-gray-700" do %>
+            <%#= icon('fa-solid', 'gauge-high', class: 'mr-2') %> <span class=" fas fa-tachometer-alt hidden md:inline-block fs-4"> Dashboard</span>
+          <% end %>
+        </li>
+        <li style="margin-top:10px; margin-bottom:10px">
+          <%= link_to "Profile: #{current_user.id} \u{2740}   #{current_user.email} ", edit_user_registration_path, class:"nav-item btn btn-outline-info" %>
+        </li>
+        <form class="d-flex" style="margin-bottom:10px">
+          <button class="btn btn-success"><%= link_to "Role: #{current_user.role.capitalize} \u{1F466}"%></button>
+        </form>
+        <%= link_to 'Home', home_index_path, class: "navbar-brand"%>
+        <li class="nav-item">
+          <%= link_to 'About Us', home_about_path%>
+        </li>
+        <li >
+          <button id="navbar-toggler" style="display: <%= cookies[:open_menu] ? 'block' : 'none' %>;">
+            <i class="fas fa-bars"></i> Product Management
+          </button>
+          <div id="navbar" >
+            <ul>
+              <li class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Products
+              </li>
+              <li class="nav-item">
+                <%= link_to admin_categories_path, class: "block px-1 py-2 hover:rounded hover:bg-gray-700" do %>
+                  <span class=" fa fa-list mr-2 hidden md:inline-block "> Categories</span>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <i class="fas fa-truck"></i> Order
+              </li>
+              <li class="nav-item">
+                <i class="fas fa-shipping-fast"></i> Delivery
+              </li>
+            </ul>
+          </div>
+        </li>
+        <%# <li class="nav-item">
+                              <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li> %>
+        <li >
+          <button id="customer-toggler" style="padding-right:2px;display: <%= cookies[:open_menu] ? 'block' : 'none' %>;">
+            <i class="fas fa-bars"></i> User Management
+          </button>
+          <div id="customer" >
+            <ul>
+              <li class="nav-item">
+                <%= link_to 'Customers', friends_path %>
+              </li>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Add Customer', new_friend_path%>
+            </li>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Users", members_path%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Add User',  new_member_path %>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li style="margin:15px">
+      <%# <%= link_to 'Sign Out', destroy_user_session_path, method: :delete%>
+      <%= button_to "Sign Out", destroy_user_session_path, :method => 'delete', data:{turbo: "false"}, class:"fas fa-sign-out-alt btn btn-primary mt-1 py-1", style: "color: #157347" %>
+    </li>
+  </ul>
+</div>
+</nav>

@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :categories
+    root to: "admin#index"
+  end
   resources :members
   # get 'members/index'
   # get 'members/create'
@@ -11,11 +15,17 @@ Rails.application.routes.draw do
   resources :companies
   devise_for :users # , :controllers => {:registrations => "users/registrations"}
   resources :friends
+  
   get 'home/index'
   get 'home/about'
+  get "admin" => "admin#index"
   devise_scope :user do
     root to: 'devise/registrations#new'
   end
+
+  # namespace :admin do
+  #   root to: "admin#index"
+  # end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -25,4 +35,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "home#index"
   # root "friends#index"
+
+  # authenticated :admin_user do
+  #   root to: "admin#index", as: :admin_root
+  # end
+
 end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # This class represents a User in the application.
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -9,6 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :friends
+  has_many :categories
 
   belongs_to :company, optional: true
   after_create :after_create_hooks
@@ -36,6 +36,7 @@ class User < ApplicationRecord
   # end
   def after_create_hooks
     return unless company.blank?  # Exit early if company is present
+    
     admin!
     create_company(owner: self, name: "#{email} company")
   end

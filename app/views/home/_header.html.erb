@@ -46,42 +46,35 @@
                 <% end %>
                 <% if user_signed_in? %>
                 </li>
-                <li class="nav-item">
+                <%# <li class="nav-item">
                   <%= link_to 'Add Customer', new_friend_path, class: "nav-link"%>
-                </li>
+                <%# </li> %>
+                <% if current_user.manager? %>
+                  <li class="nav-item">
+                    <%= link_to 'Categories', admin_categories_path, class: "nav-link"%>
+                  </li>
+                <% end %>
                 <% if !current_user.admin? %>
                   <li class="nav-item" style="margin-left:10px">
                     <%= link_to "Profile' #{current_user.id} \u{2740}   #{current_user.email} \u{2740}", root_path, class:"nav-item btn btn-outline-info" %>
                   </li>
                 <% end%>
-                <% if current_user.admin? %>
+                <li  style="margin-left:10px">
+                  <%# <%= link_to 'Sign Out', destroy_user_session_path, method: :delete%>
+                  <%= button_to "Sign Out", destroy_user_session_path, :method => 'delete', data:{turbo: "false"}, class:"fas fa-sign-out-alt btn btn-primary mt-1 py-1", style: "color: #157347" %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "Users", members_path, class:"nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to 'Add User',  new_member_path, class: "nav-link"%>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Profile: #{current_user.id} \u{2740}   #{current_user.email} \u{2740}", edit_user_registration_path, class:"nav-item btn btn-outline-info" %>
-                </li>
-              <% end%>
-              <li  style="margin-left:10px">
-                <%# <%= link_to 'Sign Out', destroy_user_session_path, method: :delete%>
-                <%= button_to "Sign Out", destroy_user_session_path, :method => 'delete', data:{turbo: "false"}, class:"fas fa-sign-out-alt btn btn-primary mt-1 py-1", style: "color: #157347" %>
-              </li>
-              <%# <li class="nav-item">
+                <%# <li class="nav-item">
         <%# <%= link_to "Profile", user_path(current_user) %>
-              <%# <%= link_to "#{current_user.email}", class:"btn btn-outline-primary"%>
-              <%# </li>  %>
-              <form class="d-flex" style="margin-left:10px">
-                <button class="btn btn-success"><%= link_to "Role: #{current_user.role} \u{1F466}"%></button>
-              </form>
-            <% end %>
-            <%# <li class="nav-item">
+                <%# <%= link_to "#{current_user.email}", class:"btn btn-outline-primary"%>
+                <%# </li>  %>
+                <form class="d-flex" style="margin-left:10px">
+                  <button class="btn btn-success"><%= link_to "Role: #{current_user.role.capitalize} \u{1F466}"%></button>
+                </form>
+              <% end %>
+              <%# <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li> %>
-            <%# <li class="nav-item dropdown">
+              <%# <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </a>
@@ -92,15 +85,15 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li> %>
-            <%# <li class="nav-item">
+              <%# <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li> %>
-          </ul>
-          <%# <form class="d-flex">
+            </ul>
+            <%# <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-success" type="submit">Search</button>
       </form> %>
+          </div>
         </div>
-      </div>
-    </nav>
-  <% end %>
+      </nav>
+    <% end %>
