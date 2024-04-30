@@ -1,0 +1,26 @@
+<div id="<%= dom_id stock %>">
+  <%# <p>
+    <strong>Size:</strong>
+    <%= stock.size %>
+  <%# </p>  %>
+  <%# <p> %>
+  <%# <strong>Amount:</strong> %>
+  <%# <%= stock.amount %>
+  <%# </p> %>
+  <%# <p> %>
+  <%# <strong>Product:</strong> %>
+  <%# <%= stock.product_id %>
+  <%# </p> %>
+  <tr>
+    <td> <%= stock.id %> </td>
+    <td> <%=  link_to "#{stock.size} " , [:admin, stock.product, stock] %>
+    </td>
+    <td> <%= stock.amount %></td>
+    <td> <%= stock.product_id %></td>
+    <td> <%= stock.product.name %></td>
+    <% if stock.product.user.present? %>
+      <td><%= stock.product.user.email %></td>
+    <% else %>
+      <td>No associated user</td>
+    <% end %>
+  </div>

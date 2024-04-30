@@ -1,0 +1,40 @@
+<%# <p style="color: green"><%= notice</p> %>
+<%# <%= render @admin_stock %>
+<div>
+  <%# <%= link_to "Edit this stock", edit_admin_stock_path(@admin_stock) %>
+  <%# <%= link_to "Back to stocks", admin_stocks_path %>
+  <%# <%= button_to "Destroy this stock", @admin_stock, method: :delete %>
+</div>
+<div class="jumbotron">
+  <div class="card-body">
+    <h1 class="display-4">
+      <%= @admin_stock.size %>
+    </h1>
+    <p class="lead">
+    </p>
+    <hr class= "my-4">
+  </div>
+</div>
+<table class="table table-striped table-hover table-bordered" >
+  <thead class="table-light">
+    <tr>
+      <th>Stock ID</th>
+      <th>Size  </th>
+      <th>Amount </th>
+      <th>Product ID  </th>
+      <th>Product Name  </th>
+      <th>User Name <%="\u{1F60E}"%> </th>
+    </tr>
+  </thead>
+  <%= render @admin_stock %>
+</tr>
+</table>
+<div style= "display:inline-block";>
+  <%= link_to "Edit", edit_admin_product_stock_path( @admin_stock.product, @admin_stock), class:"btn btn-primary",style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %>
+  <%= link_to "Back", admin_product_stocks_path, class:"btn btn-secondary" ,style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %>
+</div>
+<div style= "display:inline-block";>
+  <%= button_to "Delete", admin_product_stock_path(@admin_stock), method: :delete, class:"btn btn-danger", onclick: 'return confirm("Are you sure?");' %>
+</div>
+<br>
+<br>

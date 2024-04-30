@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :friends
   has_many :categories
+  has_many :products
 
   belongs_to :company, optional: true
   after_create :after_create_hooks

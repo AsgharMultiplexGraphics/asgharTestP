@@ -12,16 +12,11 @@
     <title>Friends</title>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%#= javascript_include_tag 'nav.js'%>
   </head>
   <body>
     <% if user_signed_in? %>
       <% if current_user.admin? %>
         <%= render  'home/admin'%>
-      <% end%>
-    <% end%>
-    <% if user_signed_in? %>
-      <% if current_user.admin? %>
         <div class="col p-2 flex-grow-1">
         <% elsif !current_user.admin?  %>
           <div class="container"  >
@@ -72,31 +67,32 @@
         </div>
       </div>
       <%# <%= javascript_importmap_tag 'nav' %>
-      <script>
-        // Function to toggle navbar visibility
-        document.getElementById('navbar-toggler').addEventListener('click', function() {
-           const toggleButton = document.getElementById('navbar');
-           if (toggleButton.style.display === 'none') {
-               toggleButton.style.display = 'block';
-               document.cookie = "open_menu=true"; // Set cookie to true on open
-           } else {
-               toggleButton.style.display = 'none';
-               document.cookie = "open_menu=false"; // Set cookie to false on close
-           }
-           });
-
-
-           // Function to toggle navbar visibility
-           document.getElementById('customer-toggler').addEventListener('click', function() {
-           const toggleButton = document.getElementById('customer');
-           if (toggleButton.style.display === 'none') {
-               toggleButton.style.display = 'block';
-               document.cookie = "open_menu=true"; // Set cookie to true on open
-           } else {
-               toggleButton.style.display = 'none';
-               document.cookie = "open_menu=false"; // Set cookie to false on close
-           }
-           });
-      </script>
+      <%# <%= javascript_include_tag 'application'%>
     </body>
+    <script>
+      // Function to toggle navbar visibility
+      document.getElementById('navbar-toggler').addEventListener('click', function() {
+         const toggleButton = document.getElementById('navbar');
+         if (toggleButton.style.display === 'none') {
+             toggleButton.style.display = 'block';
+             document.cookie = "open_menu=true"; // Set cookie to true on open
+         } else {
+             toggleButton.style.display = 'none';
+             document.cookie = "open_menu=false"; // Set cookie to false on close
+         }
+         });
+
+
+         // Function to toggle navbar visibility
+         document.getElementById('customer-toggler').addEventListener('click', function() {
+         const toggleButton = document.getElementById('customer');
+         if (toggleButton.style.display === 'none') {
+             toggleButton.style.display = 'block';
+             document.cookie = "open_menu=true"; // Set cookie to true on open
+         } else {
+             toggleButton.style.display = 'none';
+             document.cookie = "open_menu=false"; // Set cookie to false on close
+         }
+         });
+    </script>
   </html>

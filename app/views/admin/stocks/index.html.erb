@@ -1,0 +1,69 @@
+<%# <p style="color: green"><%= notice</p> %>
+<h1>Stocks</h1>
+<div id="admin_stocks">
+  <%# <% @admin_stocks.each do |admin_stock| %>
+    <%# <%= render admin_stock %>
+    <%# <p> %>
+    <%# <%= link_to "Show this stock", admin_stock %>
+    <%# </p> %>
+    <%# <% end %>
+  </div>
+  <%= link_to "New stock", new_admin_product_stock_path , class:"btn btn-primary" %>
+  <table class="table table-striped table-hover table-bordered" >
+    <thead class="table-light">
+      <tr>
+        <th>Stock ID</th>
+        <th>Size  </th>
+        <th>Amount  </th>
+        <th>Product ID  </th>
+        <th>Product Name  </th>
+        <th>Added By <%="\u{1F60E}"%> </th>
+        <%# <th>Action <%="\u{2764}" </th> %>
+        <% if current_user.email == "asghar@gmail.com"%>
+          <th>Sr.No </th>
+        </tr>
+      </thead>
+      <tbody>
+        <div id="stock">
+          <%no= 0%>
+          <%# <% Product.all.each do |product| %>
+            <%@admin_stocks.each do |stock| %>
+              <%no += 1%>
+              <%# <% if friend.user == current_user %>
+              <%= render stock %>
+              <td >
+                <%# <%=  link_to "Show ", friend, class: "btn btn-outline-dark" %>
+                <%# <button   class=""></button>   %>
+                <%# <%= button_to "Delete", admin_product_stock_path(@admin_stock), method: :delete, class:"btn btn-outline-danger btn-sm", onclick: 'return confirm("Are you sure?");' %>
+                <%# <%= link_to "Edit", edit_friend_path(@friend),class:"btn btn-primary",style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %>
+                <%# <%= friend.user_id %>
+              </td>
+              <td>
+                <%=no%>
+              </td>
+            </tr>
+            <%# <% end %>
+            <%# <% end %>
+          <% end %>
+        <% else %>
+        </tr>
+      </thead>
+      <div id="stock">
+        <% @admin_stocks.each do |stock| %>
+          <% if stock.product.user == current_user %>
+            <%= render stock %>
+            <%# <td > %>
+            <%# <%=  link_to "Show ", friend, class: "btn btn-outline-dark" %>
+            <%# <button   class=""></button>   %>
+            <%# <%= button_to "Delete", admin_product_stock_path(@admin_stock), method: :delete, class:"btn btn-outline-danger btn-sm", onclick: 'return confirm("Are you sure?");' %>
+            <%# <%= link_to "Edit", edit_friend_path(@friend),class:"btn btn-primary",style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %>
+            <%# <%= friend.user_id %>
+            <%# </td> %>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</tbody>
+</table>
+<%= link_to "Back to Products", admin_products_path , class:"btn btn-secondary" %>

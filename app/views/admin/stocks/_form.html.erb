@@ -1,0 +1,54 @@
+<%= form_with(model: [:admin, @product, admin_stock]) do |form| %>
+  <% if admin_stock.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(admin_stock.errors.count, "error") %> prohibited this admin_stock from being saved:</h2>
+      <ul>
+        <% admin_stock.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%# <div>
+    <%= form.label :size, style: "display: block" %>
+  <%# <%= form.text_field :size %>
+  <%# </div> %>
+  <%# <div> %>
+  <%# <%= form.label :amount, style: "display: block" %>
+  <%# <%= form.number_field :amount %>
+  <%# </div> %>
+  <%# <div> %>
+  <%# <%= form.label :product_id, style: "display: block" %>
+  <%# <%= form.text_field :product_id %>
+  <%# </div> %>
+  <%# <div> %>
+  <%# <%= form.submit %>
+  <%# </div>  %>
+  <div class="main-wrapper" style="display:inline-block">
+    <div class="account-content">
+      <div class="login-wrapper">
+        <div class="login-content">
+          <div class="login-userset">
+            <div class="form-login" >
+              <%= form.text_field :size, rows: 4, placeholder: "Product Size" %>
+            </div>
+            <div class="form-login">
+              <%= form.number_field :amount, rows: 4 , placeholder: "Amount" %>
+            </div>
+            <%# <div class="form-login" >
+              <% form.label :product_id %>
+            <%# <% form.collection_select :product_id, Product.order(:name), :id, :name, id: "product", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+            <%# </div>  %>
+          </div>
+        </div>
+        <div class="login-img">
+          <!--        <img src="assets/img/login.jpg" alt="img">-->
+          <%= image_tag 'stock.jpg' %>
+        </div>
+      </div>
+      <div class= "actions" >
+        <%= form.submit class: "btn btn-primary", style:"margin-left:35px; display:inline-block;" %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<h1>Editing product</h1>
+<%= render "form", admin_product: @admin_product %>
+<br>
+<div>
+  <%= link_to "Show this product", [:admin, @admin_product], class:"btn btn-info" %> |
+  <%= link_to "Back to products", admin_products_path, class: "btn btn-secondary" %>
+</div>

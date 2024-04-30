@@ -29,7 +29,10 @@
           <div id="navbar" >
             <ul>
               <li class="nav-item">
-                <i class="fas fa-shopping-cart"></i> Products
+                <%# <i class="fas fa-shopping-cart"></i> Products %>
+                <%= link_to admin_products_path, class: "block px-1 py-2 hover:rounded hover:bg-gray-700" do %>
+                  <span class=" fas fa-shopping-cart mr-2 hidden md:inline-block "> Products</span>
+                <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to admin_categories_path, class: "block px-1 py-2 hover:rounded hover:bg-gray-700" do %>
@@ -46,8 +49,8 @@
           </div>
         </li>
         <%# <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li> %>
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+      </li> %>
         <li >
           <button id="customer-toggler" style="padding-right:2px;display: <%= cookies[:open_menu] ? 'block' : 'none' %>;">
             <i class="fas fa-bars"></i> User Management

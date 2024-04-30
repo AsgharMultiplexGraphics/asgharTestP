@@ -27,13 +27,17 @@
           <div class="login-userset">
             <div class="form-login" >
               <%# <%= form.label :first_name, style: "display: block" %>
-              <%= form.text_field :name, placeholder: "Category Name" %>
+              <%= form.text_field :name, rows: 4, placeholder: "Category Name" %>
               <%# <%= form.label :name, style: "display: block" %>
               <%# <%= form.text_field :name %>
             </div>
             <div class="form-login">
               <%# <%= form.label :email, style: "display: block" %>
-              <%= form.text_area :description , placeholder: "Description" %>
+              <%= form.text_area :description, rows: 4 , placeholder: "Description" %>
+            </div>
+            <div class="form-login">
+              <%= form.label :image %>
+              <%= form.file_field :image, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
             </div>
             <div class="form-login">
               <%# <%= form.label :gender, style: "display: block" %>
