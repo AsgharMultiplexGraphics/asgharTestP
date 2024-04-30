@@ -1,0 +1,54 @@
+<%# <p style="color: green"><%= notice</p>  %>
+<h1 class="fs-1 text-center">Orders</h1>
+<%# <div id="admin_orders">
+  <% @admin_orders.each do |admin_order| %>
+  <%# <%= render admin_order %>
+  <%# <p> %>
+  <%# <%= link_to "Show this order", admin_order %>
+  <%# </p> %>
+  <%# <% end %>
+  <%# </div> %>
+  <%= link_to "New order", new_admin_order_path , class:"btn btn-primary float-end" %>
+  <h2 class="fs-2">Unfulfilled Orders</h2>
+  <table class="table table-striped table-hover table-bordered" >
+    <thead class="table-light">
+      <tr>
+        <th>Order ID</th>
+        <th>Customer Email </th>
+        <th>Fulfilled  </th>
+        <th>Total  </th>
+        <th>Address  </th>
+        <th>Orders  </th>
+      </tr>
+    </thead>
+    <tbody>
+      <div id="order">
+        <% @not_fulfilled_orders.each do |order| %>
+          <%= render order %>
+        <% end %>
+      </tr>
+    </div>
+  </tbody>
+</table>
+<h2 class="fs-2">Fulfilled Orders</h2>
+<table class="table table-striped table-hover table-bordered" >
+  <thead class="table-light">
+    <tr>
+      <th>Order ID</th>
+      <th>Customer Email </th>
+      <th>Fulfilled  </th>
+      <th>Total  </th>
+      <th>Address  </th>
+      <th>Orders  </th>
+    </tr>
+  </thead>
+  <tbody>
+    <div id="order">
+      <% @fulfilled_orders.each do |order| %>
+        <%= render order %>
+      <% end %>
+    </tr>
+  </div>
+</tbody>
+</table>
+<%= link_to "Back to Products", admin_products_path , class:"btn btn-secondary" %>

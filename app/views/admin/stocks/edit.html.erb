@@ -2,6 +2,6 @@
 <%= render "form", admin_stock: @admin_stock %>
 <br>
 <div>
-  <%= link_to "Show this stock", [:admin, @product, @admin_stock] %> |
-  <%= link_to "Back to stocks", admin_product_stocks_path %>
+  <%= link_to "Show this stock", [:admin, @product, @admin_stock] , class: "btn btn-primary " %> |
+  <%= link_to "Back to stocks", admin_product_stocks_path , class: "btn btn-secondary "%>
 </div>

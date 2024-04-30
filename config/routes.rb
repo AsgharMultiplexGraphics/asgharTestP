@@ -2,12 +2,13 @@
 
 Rails.application.routes.draw do
   namespace :admin do
+    resources :orders
     
     resources :products do
       resources :stocks
     end
     resources :categories
-    root to: "admin#index"
+    # root to: "admin#index"
   end
   resources :members
   # get 'members/index'
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
   # root "home#index"
   # root "friends#index"
 
-  # authenticated :admin_user do
+  # authenticated :user do
   #   root to: "admin#index", as: :admin_root
   # end
 

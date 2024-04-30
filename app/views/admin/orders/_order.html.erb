@@ -1,0 +1,35 @@
+<div id="<%= dom_id order %>">
+  <%# <p>
+    <strong>Customer email:</strong>
+    <%= order.customer_email %>
+  <%# </p> %>
+  <%# <p> %>
+  <%# <strong>Fulfilled:</strong> %>
+  <%# <%= order.fulfilled %>
+  <%# </p> %>
+  <%# <p> %>
+  <%# <strong>Total:</strong> %>
+  <%# <%= order.total %>
+  <%# </p> %>
+  <%# <p> %>
+  <%# <strong>Address:</strong> %>
+  <%# <%= order.address %>
+  <%# </p> %>
+  <tr>
+    <td> <%= order.id %> </td>
+    <td> <%=  link_to "#{order.customer_email} " , [:admin,  order], class: 'text-decoration-underline text-primary' %>
+    </td>
+    <td> <%= order.fulfilled %></td>
+    <td> <%= order.total %></td>
+    <td>  <%= order.address %></td>
+    <td>
+      <% if order.order_products.any? %>
+        <strong class="block font-medium mb-1">Products:</strong>
+        <% order.order_products.each do |op| %>
+          <%= op.product.name %>
+          <%= op.size %>
+          <%= op.quantity %>
+        <% end %>
+      <% end %>
+    </td>
+  </div>

@@ -1,0 +1,62 @@
+<%= form_with(model: [:admin, admin_order]) do |form| %>
+  <% if admin_order.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(admin_order.errors.count, "error") %> prohibited this admin_order from being saved:</h2>
+      <ul>
+        <% admin_order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%# <div>
+    <%= form.label :customer_email, style: "display: block" %>
+  <%# <%= form.text_field :customer_email %>
+  <%# </div>  %>
+  <%# <div> %>
+  <%# <%= form.label :fulfilled, style: "display: block" %>
+  <%# <%= form.check_box :fulfilled %>
+  <%# </div> %>
+  <%# <div> %>
+  <%# <%= form.label :total, style: "display: block" %>
+  <%# <%= form.number_field :total %>
+  <%# </div> %>
+  <%# <div> %>
+  <%# <%= form.label :address, style: "display: block" %>
+  <%# <%= form.text_field :address %>
+  <%# </div> %>
+  <%# <div> %>
+  <%# <%= form.submit %>
+  <%# </div> %>
+  <div class="main-wrapper" style="display:inline-block">
+    <div class="account-content">
+      <div class="login-wrapper">
+        <div class="login-content">
+          <div class="login-userset">
+            <div class="form-login" >
+              <%= form.text_field :customer_email, rows: 4, placeholder: "Customer Email" %>
+            </div>
+            <div class="form-login">
+              <%= form.label :fulfilled %>
+              <%= form.check_box :fulfilled, class: " h-5 w-5" %>
+            </div>
+            <div class="form-login">
+              <%= form.label :total, style: "display: block" %>
+              <%= form.number_field :total %>
+            </div>
+            <div class="form-login" >
+              <%= form.text_field :address, rows: 4, placeholder: "Customer Address" %>
+            </div>
+          </div>
+        </div>
+        <div class="login-img">
+          <!--        <img src="assets/img/login.jpg" alt="img">-->
+          <%= image_tag 'order.jpg' %>
+        </div>
+      </div>
+      <div class= "actions" >
+        <%= form.submit class: "btn btn-primary", style:"margin-left:35px; display:inline-block;" %>
+      </div>
+    </div>
+  </div>
+<% end %>

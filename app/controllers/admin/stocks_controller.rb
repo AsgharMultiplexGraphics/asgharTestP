@@ -18,6 +18,7 @@ class Admin::StocksController < ApplicationController
 
   # GET /admin/stocks/1/edit
   def edit
+    
     @product = Product.find(params[:product_id])
     @admin_stock = Stock.find(params[:id])
   #   @product = Product.find(params[:product_id])

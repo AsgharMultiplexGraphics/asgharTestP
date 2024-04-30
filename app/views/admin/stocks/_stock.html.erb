@@ -13,7 +13,7 @@
   <%# </p> %>
   <tr>
     <td> <%= stock.id %> </td>
-    <td> <%=  link_to "#{stock.size} " , [:admin, stock.product, stock] %>
+    <td> <%=  link_to "#{stock.size} " , [:admin, stock.product, stock], class: 'text-decoration-underline text-primary' %>
     </td>
     <td> <%= stock.amount %></td>
     <td> <%= stock.product_id %></td>

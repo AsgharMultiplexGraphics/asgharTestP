@@ -1,81 +1,65 @@
-<h1> User List</h1>
+<h1 class="fs-1"> User List</h1>
 <% if current_user.email == "asghar@gmail.com"%>
-<h5>Total Users = <%= @total_users %></h5>
+  <h5>Total Users = <%= @total_users %></h5>
 <% end %>
-<%# <h5>Total Users = <%=@users.size</h5> %> 
+<%# <h5>Total Users = <%=@users.size</h5> %>
 <h6>Find me in app/views/members/index.html.erb</h6>
-
-
-
-
 <table class="table table-striped table-hover table-bordered">
   <thead class="table-secondary text-center" >
-   
     <tr>
       <th scope="col">ID</th>
       <th  scope="col"><span class= " fa fa-user"> Name </span></th>
       <th scope="col">Gender <%="\u{1F468}" "\u{1F469}"%></th>
       <th scope="col">age <%="\u{1F483}"%></th>
-      <th scope="col">Role <%="\u{1F60E}"%></th> 
+      <th scope="col">Role <%="\u{1F60E}"%></th>
       <% if current_user.email == "asghar@gmail.com"%>
-      <th scope="col">Added By <%="\u{1F60E}"%></th>  
-       
-      <% end %>   
+        <th scope="col">Added By <%="\u{1F60E}"%></th>
+      <% end %>
       <th scope="col" colspan="2">Actions</th>
     </tr>
   </thead>
   <tbody class= "text-center">
-<% if current_user.email == "asghar@gmail.com"%>
-    <% User.all.each do |user| %>
-              <%# <% user.friends.each do |friend| %> 
-    <%# <%user.users.each do |user| %> 
-    <tr>
-      <td scope="row"><%= user.id%></td>
-      <td><%= user.name %></td>
-      <td><%= user.gender%></td>
-      <td><%= user.age%></td>
-      <td><%= user.role%></td>
-      <% if user.company.name.downcase.include? user.email.downcase  %>
-         <td>Company Owner</td>
-      <% elsif user.company.name.downcase.include? "asghar.ali@gmail.com" %>
-          <td>Super User</td>
-          <% else %>
-          <td><%= user.company.name%></td>
-      <% end %>
-        <td >  
-        
-      <%= link_to "View", member_path(user), class: 'btn btn-primary btn-sm ', style: "color: white;"%>
-        <%= link_to "Edit", edit_member_path(user), class: 'btn btn-secondary btn-sm ', style: "color: white;"%>
-         
-        <%# <%= button_to "Delete", user, method: :delete, class:"btn btn-outline-danger", onclick: 'return confirm("Are you sure?");'%>  
-    
-
-      </td>
-      <td >
-      <%= button_to "Delete", member_path(user), method: :delete, class:"btn btn-outline-danger btn-sm mt-2", onclick: 'return confirm("Are you sure?");' %>
-       </td>
-    </tr>
-     <% end%> 
-<% else%>
- <%@users.each do |user| %>
-     
-    <tr>
-      <td scope="row"><%= user.id%></td>
-      <td><%= user.name %></td>
-      <td><%= user.gender%></td>
-      <td><%= user.age%></td>
-      <td><%= user.role%></td>
-      
-       <td>
-        <%= link_to "View", member_path(user), class: 'btn btn-primary', style: "color: white;"%>
-        <%= link_to "Edit", edit_member_path(user), class: 'btn btn-secondary', style: "color: white;"%>
-         
-      </td>
-    </tr>
-    <% end%> 
-<% end %>
-
-     
-
-  </tbody>
-</table>
+    <% if current_user.email == "asghar@gmail.com"%>
+      <% User.all.each do |user| %>
+        <%# <% user.friends.each do |friend| %>
+          <%# <%user.users.each do |user| %>
+            <tr>
+              <td scope="row"><%= user.id%></td>
+              <td><%= user.name %></td>
+              <td><%= user.gender%></td>
+              <td><%= user.age%></td>
+              <td><%= user.role%></td>
+              <% if user.company.name.downcase.include? user.email.downcase  %>
+                <td>Company Owner</td>
+              <% elsif user.company.name.downcase.include? "asghar.ali@gmail.com" %>
+                <td>Super User</td>
+              <% else %>
+                <td><%= user.company.name%></td>
+              <% end %>
+              <td >
+                <%= link_to "View", member_path(user), class: 'btn btn-primary btn-sm ', style: "color: white;"%>
+                <%= link_to "Edit", edit_member_path(user), class: 'btn btn-secondary btn-sm ', style: "color: white;"%>
+                <%# <%= button_to "Delete", user, method: :delete, class:"btn btn-outline-danger", onclick: 'return confirm("Are you sure?");'%>
+              </td>
+              <td >
+                <%= button_to "Delete", member_path(user), method: :delete, class:"btn btn-outline-danger btn-sm mt-2", onclick: 'return confirm("Are you sure?");' %>
+              </td>
+            </tr>
+          <% end%>
+        <% else%>
+          <%@users.each do |user| %>
+            <tr>
+              <td scope="row"><%= user.id%></td>
+              <td><%= user.name %></td>
+              <td><%= user.gender%></td>
+              <td><%= user.age%></td>
+              <td><%= user.role%></td>
+              <td>
+                <%= link_to "View", member_path(user), class: 'btn btn-primary', style: "color: white;"%>
+                <%= link_to "Edit", edit_member_path(user), class: 'btn btn-secondary', style: "color: white;"%>
+              </td>
+            </tr>
+          <% end%>
+        <% end %>
+      </tbody>
+    </table>
