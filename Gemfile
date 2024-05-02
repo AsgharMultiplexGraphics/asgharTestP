@@ -30,7 +30,7 @@ gem "jbuilder"
 gem 'devise', '~> 4.9', '>= 4.9.3'
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
+gem "redis", ">= 4.0.1"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -69,12 +69,13 @@ group :test do
   gem "selenium-webdriver"
 end
 gem "rb-readline"
-gem "pg", "~> 1.1"
+#gem "pg", "~> 1.1"
 gem 'ffi'
 #gem "font-awesome-sass", "~> 6.5.1"
 #gem 'sassc', '~> 2.4.0'
 
 gem "stripe", "~> 10.3"
+gem "aws-sdk-s3", require: false
 
 gem "pagy", "~> 6.2"
 gem "image_processing", "~> 1.2"

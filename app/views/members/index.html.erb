@@ -1,9 +1,9 @@
-<h1 class="fs-1"> User List</h1>
+<h1 class="fs-1 font-bold"> USERS LIST</h1>
+<%= link_to "New User", new_member_path, class:"btn btn-success m-2 float-end" %>
 <% if current_user.email == "asghar@gmail.com"%>
   <h5>Total Users = <%= @total_users %></h5>
 <% end %>
 <%# <h5>Total Users = <%=@users.size</h5> %>
-<h6>Find me in app/views/members/index.html.erb</h6>
 <table class="table table-striped table-hover table-bordered">
   <thead class="table-secondary text-center" >
     <tr>

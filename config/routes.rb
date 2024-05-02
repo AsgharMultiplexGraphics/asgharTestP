@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   devise_for :users # , :controllers => {:registrations => "users/registrations"}
   resources :friends
   
-  get 'home/index'
+  get 'home/index', as: :home
   get 'home/about'
   get "admin" => "admin#index"
   devise_scope :user do
