@@ -4,6 +4,7 @@
       <%# <h1 class="text-md py-2 font-bold">POS System</h1> %>
       <%= image_tag('logo.jpg', alt: 'About Us Image',style:"max-width: 100%; hight: 133px; width:100px", class: "logo") %>
     </div>
+
     <div class = "dcenter">
       <ul class="nav nav-pills flex-column mb-auto " style="margin:20px">
         <li >
@@ -18,7 +19,7 @@
         <form class="d-flex" style="margin-bottom:10px">
           <button class="btn btn-success"><%= link_to "Role: #{current_user.role.capitalize} \u{1F466}"%></button>
         </form>
-        <%= link_to 'Home', home_index_path, class: "navbar-brand"%>
+        <%= link_to 'Home', home_path, class: "navbar-brand"%>
         <li class="nav-item">
           <%= link_to 'About Us', home_about_path%>
         </li>
@@ -27,6 +28,7 @@
           <button id="navbar-toggler" style="display: <%= cookies[:open_menu] ? 'block' : 'block' %>;">
             <i class="fas fa-bars"></i> Product Management
           </button>
+
           <div id="navbar" >
             <ul>
               <li class="nav-item">
@@ -90,9 +92,12 @@
   </ul>
 </div>
 </nav>
+
 <script>
   // Function to toggle navbar visibility
-  document.getElementById('navbar-toggler').addEventListener('click', function() {
+  let nav = document.querySelector('#navbar-toggler')
+  
+  nav.addEventListener('click', function() {
      const toggleButton = document.getElementById('navbar');
      if (toggleButton.style.display === 'none') {
          toggleButton.style.display = 'block';

@@ -5,11 +5,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Point of Sale</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%# <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
   <body>
     <main class="flex">
@@ -19,6 +20,7 @@
             <%= render  'home/admin'%>
           <% end%>
         <% end%>
+
         <div class="col p-5 flex-grow-1">
           <%= yield %>
           <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -30,6 +32,9 @@
               -->
         </div>
       </div>
+
+          <%= javascript_importmap_tags %>
+
     </main>
   </body>
 </html>
