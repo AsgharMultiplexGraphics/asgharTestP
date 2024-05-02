@@ -22,8 +22,9 @@
         <li class="nav-item">
           <%= link_to 'About Us', home_about_path%>
         </li>
+        <hr>
         <li >
-          <button id="navbar-toggler" style="display: <%= cookies[:open_menu] ? 'block' : 'none' %>;">
+          <button id="navbar-toggler" style="display: <%= cookies[:open_menu] ? 'block' : 'block' %>;">
             <i class="fas fa-bars"></i> Product Management
           </button>
           <div id="navbar" >
@@ -45,7 +46,9 @@
                 <% end %>
               </li>
               <li class="nav-item">
-                <i class="fas fa-shipping-fast"></i> Delivery
+                <%= link_to admin_path, class: "block px-1 py-2 hover:rounded hover:bg-gray-700" do %>
+                  <span class=" fas fa-file mr-2 hidden md:inline-block "> Reports</span>
+                <% end %>
               </li>
             </ul>
           </div>
@@ -53,26 +56,30 @@
         <%# <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="#">Home</a>
       </li> %>
+        <hr>
         <li >
           <button id="customer-toggler" style="padding-right:2px;display: <%= cookies[:open_menu] ? 'block' : 'none' %>;">
             <i class="fas fa-bars"></i> User Management
           </button>
+          <hr>
           <div id="customer" >
             <ul>
-              <li class="nav-item">
-                <%= link_to 'Customers', friends_path %>
-              </li>
+              <%# <li class="nav-item">
+              <%= link_to 'Add Customer', new_friend_path%>
+              <%# </li>  %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Add Customer', new_friend_path%>
+              <%= link_to members_path, class: "block px-1 py-2 hover:rounded hover:bg-gray-700" do %>
+                <span class=" fas fa-users mr-2 hidden md:inline-block "> User Management</span>
+              <% end %>
             </li>
+            <%# <li class="nav-item">
+              <%= link_to 'Customers Management', friends_path %>
+            <%# </li>  %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Users", members_path%>
-          </li>
-          <li class="nav-item">
+          <%# <li class="nav-item">
             <%= link_to 'Add User',  new_member_path %>
-          </li>
+          <%# </li> %>
         </ul>
       </div>
     </li>
@@ -83,3 +90,29 @@
   </ul>
 </div>
 </nav>
+<script>
+  // Function to toggle navbar visibility
+  document.getElementById('navbar-toggler').addEventListener('click', function() {
+     const toggleButton = document.getElementById('navbar');
+     if (toggleButton.style.display === 'none') {
+         toggleButton.style.display = 'block';
+         document.cookie = "open_menu=false"; // Set cookie to true on open
+     } else {
+         toggleButton.style.display = 'none';
+         document.cookie = "open_menu=true"; // Set cookie to false on close
+     }
+     });
+
+
+     // Function to toggle navbar visibility
+     document.getElementById('customer-toggler').addEventListener('click', function() {
+     const toggleButton = document.getElementById('customer');
+     if (toggleButton.style.display === 'none') {
+         toggleButton.style.display = 'block';
+         document.cookie = "open_menu=true"; // Set cookie to true on open
+     } else {
+         toggleButton.style.display = 'none';
+         document.cookie = "open_menu=false"; // Set cookie to false on close
+     }
+     });
+</script>
