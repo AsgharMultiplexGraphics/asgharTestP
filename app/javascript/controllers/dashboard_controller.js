@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+// import { chart, registerables } from 'chart.js'
 // Connects to data-controller="dashboard"
 export default class extends Controller {
   static values = { revenue: Array }

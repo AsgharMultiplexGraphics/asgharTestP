@@ -1,5 +1,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class = "pt-10 fs-5">
+    <%= render "devise/shared/error_messages", resource: resource %>
+  </div>
   <%# <div class="main-wrapper flex" >
     <div class="account-content"> %>
   <div class="login-wrapper">

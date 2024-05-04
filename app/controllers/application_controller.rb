@@ -24,15 +24,17 @@ class ApplicationController < ActionController::Base
   # def set_root_path_for_admin
   #   redirect_to admin_path if current_user&.admin?
   # end
-
+  # VIP Setting    
   def root_path
     if current_user
       if current_user.admin?
         "/admin"
         elsif current_user.cashier?
-          home_path
+          #home_path
+          "/cashier"
         else # manager
-          home_path
+          #home_path
+          "/manager"
         end
 
     else

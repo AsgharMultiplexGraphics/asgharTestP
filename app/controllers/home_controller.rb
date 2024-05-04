@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
+
   def index
+    @main_categories = Category.take(4)
    # This method is used to add two numbers
     # def sum(first, second)
     # first.to_i + second.to_i

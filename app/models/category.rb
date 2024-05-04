@@ -3,6 +3,7 @@ class Category < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [50, 50]
   end
     belongs_to :user
+    has_many :products, dependent: :destroy
 
 
     def owner(current_user)
