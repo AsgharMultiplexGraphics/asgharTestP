@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
   # before_action :set_root_path_for_admin
   # before_action :require_admin
 
