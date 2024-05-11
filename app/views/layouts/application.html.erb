@@ -42,28 +42,7 @@
           <br/>
           <br/>
           <hr>
-          <div class="card">
-            <div class="card-header">
-              Author: Asghar Ali
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Final Year Project</h5>
-              <p class="card-text">This App has been developed under the supervision of <strong>Miss Saima Jamil</strong></p>
-              <p class="card-text">Special Thanks to <strong>Naveed Bhai</strong> for guidance and help</p>
-              <div  style= "display:inline-block">
-                <% if !user_signed_in? %>
-                  <%= link_to 'Sign In', new_user_session_path, class:"btn btn-primary"%>
-                <% else %>
-                  <%# <%= link_to 'Sign Out', destroy_user_session_path, method: :delete%>
-                  <%= button_to "Sign Out", destroy_user_session_path, :method => 'delete', data:{turbo: "false", style: "display:inline-block"}, class:" btn btn-primary" %>
-                <% end %>
-              </div>
-              <div  style= "display:inline-block">
-                <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
-                <%= link_to 'Go to Home', root_path, class:"btn btn-secondary", style: "display:inline-block" %>
-              </div>
-            </div>
-          </div>
+          <%= render  'home/footer'%>
         </div>
       </div>
     </body>

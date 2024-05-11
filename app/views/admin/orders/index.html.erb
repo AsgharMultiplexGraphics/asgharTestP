@@ -30,6 +30,7 @@
     </div>
   </tbody>
 </table>
+<%== pagy_nav(@not_fulfilled_pagy) if @not_fulfilled_pagy.pages > 1 %>
 <h2 class="fs-2">Fulfilled Orders</h2>
 <table class="table table-striped table-hover table-bordered" >
   <thead class="table-light">
@@ -51,4 +52,5 @@
   </div>
 </tbody>
 </table>
+<%== pagy_nav(@fulfilled_pagy) if @fulfilled_pagy.pages > 1 %>
 <%= link_to "Back to Products", admin_products_path , class:"btn btn-secondary" %>

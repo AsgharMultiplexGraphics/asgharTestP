@@ -11,6 +11,15 @@
         <%# <% end %>
       </div>
       <%= link_to "New product", new_admin_product_path , class:"btn btn-primary float-end"%>
+      <div class="flex mt-3 flex-col md:flex-row items-start md:items-center justify-betwee w-full">
+        <%= form_with url: admin_products_path, method: :get, class: "flex" do |form| %>
+          <%= form.text_field :query, placeholder: "Search", class: "rounded border border-black text-gray-800"%>
+          <%= form.submit "Submit", class: "cursor-pointer  ml-2 mt-1 hover:bg-orange-600 text-white py-2 px-4 rounded btn btn-success"%>
+        <% end%>
+        <%= form_with url: admin_products_path, method: :get, class: 'flex' do |form|%>
+          <%= form.submit "Clear", class: "cursor-pointer  ml-0 md:ml-2 mt-1 md:mt-0 hover:bg-orange-600 text-white py-2 px-4 rounded btn btn-secondary"%>
+        <% end%>
+      </div>
       <table class="table table-striped table-hover table-bordered" >
         <thead class="table-light">
           <tr>
@@ -24,54 +33,55 @@
             <th>Added By <%="\u{1F60E}"%> </th>
             <th>Status <%="\u{1F60E}"%> </th>
             <th>Action <%="\u{2764}"%> </th>
-            <% if current_user.email == "asghar@gmail.com"%>
-              <th>Sr.No </th>
-            </tr>
-          </thead>
-          <tbody>
-            <div id="product">
-              <%no= 0%>
-              <% User.all.each do |user| %>
-                <% user.products.each do |product| %>
-                  <%no += 1%>
-                  <%# <% if friend.user == current_user %>
-                  <%= render product %>
-                  <td >
-                    <%# <%=  link_to "Show ", friend, class: "btn btn-outline-dark" %>
-                    <%# <button   class=""></button>   %>
-                    <%= button_to "Delete",[:admin, product], method: :delete, class:"btn btn-outline-danger btn-sm", onclick: 'return confirm("Are you sure?");' %>
-                    <%# <%= link_to "Edit", edit_friend_path(@friend),class:"btn btn-primary",style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %>
-                    <%# <%= friend.user_id %>
-                  </td>
-                  <td>
-                    <%=no%>
-                  </td>
-                </tr>
-                <%# <% end %>
-              <% end %>
-            <% end %>
-          <% else %>
+            <%# <% if current_user.email == "asghar@gmail.com"%>
+            <th>Sr.No </th>
           </tr>
         </thead>
-        <div id="product">
-          <% @admin_products.each do |product| %>
-            <% if product.user == current_user %>
-              <%= render product %>
-              <td >
-                <%# <%=  link_to "Show ", friend, class: "btn btn-outline-dark" %>
-                <%# <button   class=""></button>   %>
-                <%= button_to "Delete", [:admin, product], method: :delete, class:"btn btn-outline-danger btn-sm", onclick: 'return confirm("Are you sure?");' %>
-                <%# <%= link_to "Edit", edit_friend_path(@friend),class:"btn btn-primary",style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %>
-                <%# <%= friend.user_id %>
-              </td>
-            </tr>
+        <tbody>
+          <div id="product">
+            <%no= 0%>
+            <% User.all.each do |user| %>
+              <% user.products.each do |product| %>
+                <%no += 1%>
+                <%# <% if friend.user == current_user %>
+                <%= render product %>
+                <td >
+                  <%# <%=  link_to "Show ", friend, class: "btn btn-outline-dark" %>
+                  <%# <button   class=""></button>   %>
+                  <%= button_to "Delete",[:admin, product], method: :delete, class:"btn btn-outline-danger btn-sm", onclick: 'return confirm("Are you sure?");' %>
+                  <%# <%= link_to "Edit", edit_friend_path(@friend),class:"btn btn-primary",style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %>
+                  <%# <%= friend.user_id %>
+                </td>
+                <td>
+                  <%=no%>
+                </td>
+              </tr>
+              <%# <% end %>
+            <% end %>
           <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  </tbody>
-</table>
-<% else %>
-  <h1>You are not authorize to access this option</h1>
-<% end %>
-<% end %>
+          <%# <% else %>
+          <%# </tr>
+            </thead>
+            <div id="product">
+              <% @admin_products.each do |product| %>
+            <%# <% if product.user == current_user %>
+            <%# <%= render product %>
+            <%# <td >
+                    <%# <%=  link_to "Show ", friend, class: "btn btn-outline-dark" %>
+            <%# <button   class=""></button>   %>
+            <%# <%= button_to "Delete", [:admin, product], method: :delete, class:"btn btn-outline-danger btn-sm", onclick: 'return confirm("Are you sure?");' %>
+            <%# <%= link_to "Edit", edit_friend_path(@friend),class:"btn btn-primary",style:"margin-top:10px; margin-bottom:10px;display:inline-block;" %>
+            <%# <%= friend.user_id %>
+            <%# </td>
+                </tr>
+              <% end %>
+            <%# <% end %>
+            <%# <% end %>
+          </div>
+        </tbody>
+      </table>
+      <%== pagy_nav(@pagy) if @pagy.pages > 1%>
+    <% else %>
+      <h1>You are not authorize to access this option</h1>
+    <% end %>
+  <% end %>

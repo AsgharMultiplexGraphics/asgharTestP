@@ -7,15 +7,22 @@ class Admin::ProductsController < ApplicationController
 
   # GET /admin/products or /admin/products.json
   def index
-    @admins = User.where(role: 'admin')
-    @cashiers = User.where(role: 'cashier')
-    @managers = User.where(role: 'manager')
-  @cashier_p = @cashiers.sum { |cashier| cashier.products.size }
-  @manager_p = @managers.sum { |manager| manager.products.size }
-  @admin_p = @admins.sum { |admin| admin.products.size }
+    if params[:query].present?
+      @pagy, @admin_products = pagy(Product.where("name LIKE ?", "%#{params[:query]}%"))
+    else
+      @pagy, @admin_products = pagy(Product.all)
+    end
+    
+  #   @admins = User.where(role: 'admin')
+  #   @cashiers = User.where(role: 'cashier')
+  #   @managers = User.where(role: 'manager')
+  # @cashier_p = @cashiers.sum { |cashier| cashier.products.size }
+  # @manager_p = @managers.sum { |manager| manager.products.size }
+  # @admin_p = @admins.sum { |admin| admin.products.size }
 
-  @total_p =  @cashier_p + @admin_p + @manager_p
+  # @total_p =  @cashier_p + @admin_p + @manager_p
     @admin_products = Product.all
+    
   end
 
   # GET /admin/products/1 or /admin/products/1.json

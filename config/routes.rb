@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     # root to: "admin#index"
   end
   resources :members
+
   # get 'members/index'
   # get 'members/create'
   # get 'members/new'
@@ -18,14 +19,31 @@ Rails.application.routes.draw do
   # get 'members/update'
   # get 'members/destroy'
   resources :companies
+   get 'company' => 'companies#index'
   devise_for :users # , :controllers => {:registrations => "users/registrations"}
   resources :friends
   
   get 'home/index', as: :home
   get 'home/about'
   get "admin" => "admin#index"
+  get "cashier" => "cashier#index"
+  get "manager" => "manager#index"
+  get "cart"  => "carts#show"
+  #get "invoice"  => "carts#invoice"
+  get "categories" => "categories#index"
+  # get "category" => "category#index"
+  resources :categories, only: [:show]
+  resources :products, only: [:show]
+  # resources :cashier do
+  #   get :index, to: 'cashier#index'  # cashier_index_path
+  # end
+
+  # resources :manager do
+  #   get :index, to: 'manager#index'  # manager_index_path
+  # end
   devise_scope :user do
-    root to: 'devise/registrations#new'
+    root to: 'home#index'
+    get 'devise/registrations/new', as: :sign_up
   end
 
   # namespace :admin do

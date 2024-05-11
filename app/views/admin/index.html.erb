@@ -35,14 +35,12 @@
       </div>
     </div>
   </div>
-  
   <div class="my-8 w-full">
     <h2 class="text-2xl text-gray-800 font-medium mb-4">Revenue</h2>
     <div class="w-full" data-controller="dashboard" data-dashboard-revenue-value="<%= @revenue_by_day.to_json %>">
       <canvas id="revenueChart"></canvas>
     </div>
   </div>
-
   <div class="flex flex-col w-full">
     <h2 class="text-2xl text-gray-800 mb-4 font-medium">Recent Unfulfilled Orders</h2>
     <div class="overflow-x-auto">
@@ -86,10 +84,10 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Sunday', 'Monday', 'Tuseday', 'Wednesday', 'Thursday', 'Friday'],
+      labels: ['First', 'Second', 'Third', 'Forth', 'Fifth', 'Sixth'],
       datasets: [{
         label: '# of Sales',
-        data: [12, 19, 3, 5, 10, 3],
+        data: [19, 12, 10, 7, 4, 3],
         borderWidth: 1
       }]
     },
@@ -101,57 +99,4 @@
       }
     }
   });
-</script>
-
-<script>
-  // import { Controller } from "@hotwired/stimulus"
-  // import {Chart, registerables } from 'chart.js'
-
-  // Chart.register(...registerables)
-
-  // // Connects to data-controller="dashboard"
-  // export default class extends Controller {
-  //  static values = { revenue: Array }
-
-  //  initialize() {
-  //    const data = this.revenueValue.map((item) => item[1]/100.0)
-  //    const labels = this.revenueValue.map((item) => item[0])
-
-    //  const ctx = document.getElementById('myChart')
-
-    //  new Chart(ctx, {
-    //    type: 'line',
-    //    data: {
-    //      labels: labels,
-    //      datasets: [{
-    //        label: 'Revenue $',
-    //        data: data,
-    //        borderWidth: 3,
-    //        fill: true
-    //      }]
-    //    },
-    //    options: {
-    //      plugins: {
-    //        legend: {
-    //          display: false
-    //        }
-    //      },
-    //      scales: {
-    //        x: {
-    //          grid: {
-    //            display: false
-    //          }
-    //        },
-    //        y: {
-    //          border: {
-    //            dash: [5, 5]
-    //          },
-    //          grid: {
-    //            color: "#d4f3ef"
-    //          },
-    //          beginAtZero: true
-    //        }
-    //      }
-    //    }
-    //  })
 </script>
