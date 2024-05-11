@@ -4,7 +4,6 @@
       <%# <h1 class="text-md py-2 font-bold">POS System</h1> %>
       <%= image_tag('logo.jpg', alt: 'About Us Image',style:"max-width: 100%; hight: 133px; width:100px", class: "logo") %>
     </div>
-
     <div class = "dcenter">
       <ul class="nav nav-pills flex-column mb-auto " style="margin:20px">
         <li >
@@ -23,12 +22,16 @@
         <li class="nav-item">
           <%= link_to 'About Us', home_about_path%>
         </li>
+        <li class="nav-item">
+          <%= link_to members_path, class: "block px-1 py-2 hover:rounded hover:bg-gray-700" do %>
+            <span class=" fas fa-users mr-2 hidden md:inline-block "> User Management</span>
+          <% end %>
+        </li>
         <hr>
         <li >
           <button id="navbar-toggler" style="display: <%= cookies[:open_menu] ? 'block' : 'block' %>;">
             <i class="fas fa-bars"></i> Product Management
           </button>
-
           <div id="navbar" >
             <ul>
               <li class="nav-item">
@@ -44,7 +47,7 @@
               </li>
               <li class="nav-item">
                 <%= link_to admin_orders_path, class: "block px-1 py-2 hover:rounded hover:bg-gray-700" do %>
-                  <span class=" fas fa-truck mr-2 hidden md:inline-block "> Ordrs</span>
+                  <span class=" fas fa-truck mr-2 hidden md:inline-block "> Orders</span>
                 <% end %>
               </li>
               <li class="nav-item">
@@ -61,63 +64,57 @@
         <hr>
         <li >
           <button id="customer-toggler" style="padding-right:2px;display: <%= cookies[:open_menu] ? 'block' : 'none' %>;">
-            <i class="fas fa-bars"></i> User Management
+            <i class="fas fa-bars"></i> Sale Processing
           </button>
           <hr>
           <div id="customer" >
             <ul>
-              <%# <li class="nav-item">
-              <%= link_to 'Add Customer', new_friend_path%>
-              <%# </li>  %>
-            </li>
-            <li class="nav-item">
-              <%= link_to members_path, class: "block px-1 py-2 hover:rounded hover:bg-gray-700" do %>
-                <span class=" fas fa-users mr-2 hidden md:inline-block "> User Management</span>
-              <% end %>
-            </li>
-            <%# <li class="nav-item">
-              <%= link_to 'Customers Management', friends_path %>
-            <%# </li>  %>
-          </li>
-          <%# <li class="nav-item">
-            <%= link_to 'Add User',  new_member_path %>
-          <%# </li> %>
-        </ul>
-      </div>
-    </li>
-    <li style="margin:15px">
-      <%# <%= link_to 'Sign Out', destroy_user_session_path, method: :delete%>
-      <%= button_to "Sign Out", destroy_user_session_path, :method => 'delete', data:{turbo: "false"}, class:"fas fa-sign-out-alt btn btn-primary mt-1 py-1", style: "color: #157347" %>
-    </li>
-  </ul>
-</div>
-</nav>
+              <li class="nav-item flex space-x-10 pl-5 pr-5">
+                <%= link_to 'Sell', categories_path, class: "text-gray-500 py-2 rounded-md text-md font-medium" %>
+              </li>
+              <li class="nav-item">
+                <div class="flex space-x-10">
+                  <%= link_to  cart_path, class: "text-gray-500 hover:underline py-2 rounded-md text-md font-medium" do %>
+                    <%# <%= icon 'fa-solid', 'shopping-cart' %>
+                    <span class = "fas fa-shopping-cart "> Cart</span>
+                  <% end %>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <hr>
+        <li style="margin:15px">
+          <%= button_to "Sign Out", destroy_user_session_path, :method => 'delete', data:{turbo: "false"}, class:"fas fa-sign-out-alt btn btn-primary mt-1 py-1", style: "color: #157347" %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <script>
+    // Function to toggle navbar visibility
+    let nav = document.querySelector('#navbar-toggler')
 
-<script>
-  // Function to toggle navbar visibility
-  let nav = document.querySelector('#navbar-toggler')
-  
-  nav.addEventListener('click', function() {
-     const toggleButton = document.getElementById('navbar');
-     if (toggleButton.style.display === 'none') {
-         toggleButton.style.display = 'block';
-         document.cookie = "open_menu=false"; // Set cookie to true on open
-     } else {
-         toggleButton.style.display = 'none';
-         document.cookie = "open_menu=true"; // Set cookie to false on close
-     }
-     });
+    nav.addEventListener('click', function() {
+       const toggleButton = document.getElementById('navbar');
+       if (toggleButton.style.display === 'none') {
+           toggleButton.style.display = 'block';
+           document.cookie = "open_menu=false"; // Set cookie to true on open
+       } else {
+           toggleButton.style.display = 'none';
+           document.cookie = "open_menu=true"; // Set cookie to false on close
+       }
+       });
 
 
-     // Function to toggle navbar visibility
-     document.getElementById('customer-toggler').addEventListener('click', function() {
-     const toggleButton = document.getElementById('customer');
-     if (toggleButton.style.display === 'none') {
-         toggleButton.style.display = 'block';
-         document.cookie = "open_menu=true"; // Set cookie to true on open
-     } else {
-         toggleButton.style.display = 'none';
-         document.cookie = "open_menu=false"; // Set cookie to false on close
-     }
-     });
-</script>
+       // Function to toggle navbar visibility
+       document.getElementById('customer-toggler').addEventListener('click', function() {
+       const toggleButton = document.getElementById('customer');
+       if (toggleButton.style.display === 'none') {
+           toggleButton.style.display = 'block';
+           document.cookie = "open_menu=true"; // Set cookie to true on open
+       } else {
+           toggleButton.style.display = 'none';
+           document.cookie = "open_menu=false"; // Set cookie to false on close
+       }
+       });
+  </script>

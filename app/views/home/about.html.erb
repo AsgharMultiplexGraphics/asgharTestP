@@ -1,4 +1,4 @@
-<div style="background-image: url('<%= asset_path('about-background.jpg') %>'); background-size: cover;">
+<div class = "pb-40" style="background-image: url('<%= asset_path('about-background.jpg') %>'); background-size: cover;">
   <div class="container">
     <br>
     <br>
@@ -6,34 +6,35 @@
     <h3 class="fs-3"><%= @about_me%></h3>
     <p>I am a software engineering student at Virtual Universty of Pakistan </p>
     <p>This is my Final Year Project </p>
-    <!-- Button to toggle calculator visibility -->
-    <div style="display: none">
-      <button id="toggleCalculator"  >Toggle Calculator</button>
-      <!-- Calculator form -->
-      <div id="calculator" style="<%= cookies[:calculator_open]? 'display: block;' : 'display: none;' %>">
-        <h1>Calculator</h1>
-        <%= form_tag(home_about_path, method: :get) do %>
-          <%= label_tag(:first_number, "Enter first number:") %>
-          <%= text_field_tag(:first_number, params[:first_number]) %>
-          <%= label_tag(:second_number, "Enter second number:") %>
-          <%= text_field_tag(:second_number, params[:second_number]) %>
-          <%= submit_tag("Add") %>
-          <button id="clear">Clear Fields</button>
-        <% end %>
-        <% if @result.present? %>
-          <h2>Result: <%= @first_number %> + <%= @second_number %> = <%= @result %></h2>
-          <button id="close">Close Calculator</button>
-        <% end %>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-      </div>
-      <%# <script>
+  </div>
+  <!-- Button to toggle calculator visibility -->
+  <div style="display: none">
+    <button id="toggleCalculator"  >Toggle Calculator</button>
+    <!-- Calculator form -->
+    <div id="calculator" style="<%= cookies[:calculator_open]? 'display: block;' : 'display: none;' %>">
+      <h1>Calculator</h1>
+      <%= form_tag(home_about_path, method: :get) do %>
+        <%= label_tag(:first_number, "Enter first number:") %>
+        <%= text_field_tag(:first_number, params[:first_number]) %>
+        <%= label_tag(:second_number, "Enter second number:") %>
+        <%= text_field_tag(:second_number, params[:second_number]) %>
+        <%= submit_tag("Add") %>
+        <button id="clear">Clear Fields</button>
+      <% end %>
+      <% if @result.present? %>
+        <h2>Result: <%= @first_number %> + <%= @second_number %> = <%= @result %></h2>
+        <button id="close">Close Calculator</button>
+      <% end %>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+    <%# <script>
                         // Function to toggle calculator visibility
                         document.getElementById('toggleCalculator').addEventListener('click', function() {
                             var calculator = document.getElementById('calculator');
@@ -44,29 +45,28 @@
                             }
                         });
                         </script> %>
-      <script>
-        // Function to toggle calculator visibility
-        document.getElementById('toggleCalculator').addEventListener('click', function() {
-            var calculator = document.getElementById('calculator');
-            if (calculator.style.display === 'none') {
-            calculator.style.display = 'block';
-            document.cookie = "calculator_open=false;"
-            } else {
-            calculator.style.display = 'none';
-            document.cookie = "calculator_open=true;"
-            }
-        });
+    <script>
+      // Function to toggle calculator visibility
+      document.getElementById('toggleCalculator').addEventListener('click', function() {
+          var calculator = document.getElementById('calculator');
+          if (calculator.style.display === 'none') {
+          calculator.style.display = 'block';
+          document.cookie = "calculator_open=false;"
+          } else {
+          calculator.style.display = 'none';
+          document.cookie = "calculator_open=true;"
+          }
+      });
 
-        // Function to close calculator after seeing result
-        document.getElementById('close').addEventListener('click', function() {
-            var calculator = document.getElementById('calculator');
-            calculator.style.display = 'none';
-            document.cookie = "calculator_open=false";
-        });
-            // Function to clear calculator fields
-        document.getElementById('clear').addEventListener('click', function() {
-            document.getElementById('first_number').value = '';
-            document.getElementById('second_number').value = '';
-        });
-      </script>
-    </div>
+      // Function to close calculator after seeing result
+      document.getElementById('close').addEventListener('click', function() {
+          var calculator = document.getElementById('calculator');
+          calculator.style.display = 'none';
+          document.cookie = "calculator_open=false";
+      });
+          // Function to clear calculator fields
+      document.getElementById('clear').addEventListener('click', function() {
+          document.getElementById('first_number').value = '';
+          document.getElementById('second_number').value = '';
+      });
+    </script>

@@ -7,11 +7,11 @@ class Admin::ProductsController < ApplicationController
 
   # GET /admin/products or /admin/products.json
   def index
-    # if params[:query].present?
-    #   @pagy, @admin_products = pagy(Product.where("name LIKE ?", "%#{params[:query]}%"))
-    # else
-    #   @pagy, @admin_products = pagy(Product.all)
-    # end
+    if params[:query].present?
+      @pagy, @admin_products = pagy(Product.where("name LIKE ?", "%#{params[:query]}%"))
+    else
+      @pagy, @admin_products = pagy(Product.all)
+    end
     
   #   @admins = User.where(role: 'admin')
   #   @cashiers = User.where(role: 'cashier')

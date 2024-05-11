@@ -1,1 +1,27 @@
 <h1 class= "fs-1"> Cashier MANAGMENT </h1>
+<div class= "pb-40" style="background-image: url('<%= asset_path('background.jpg') %>'); background-size: cover;">
+  <hr class= "my-4">
+  <p class="lead" style="display: inline-block">
+    Student ID: BC200414501
+    Group Id: F23028CB55 (Single)
+  </p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+<div class="flex flex-wrap justify-center mt-8 pb-20 items-center gap-10">
+  <% @main_categories.each do |category| %>
+    <%= link_to category_path(category) do %>
+      <div class="flex flex-col mb-4">
+        <h2 class="text-gray-800 font-medium text-lg text-center mb-6"><%= category.name %></h2>
+        <%= category.image.present? ? image_tag(category.image, class: "max-w-lg px-2", style: "width: 212px; height: 212px; object-fit: cover;") : image_tag("http://via.placeholder.com/212") %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

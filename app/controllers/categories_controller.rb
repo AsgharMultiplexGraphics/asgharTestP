@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+  def index
+    @main_categories = Category.take(100)
+  end
     def show
       @category = Category.find(params[:id])
       @products = @category.products
@@ -9,5 +12,6 @@ class CategoriesController < ApplicationController
         @products = @products.where("price >= ?", params[:min])
       end
     end
+    
   end
   

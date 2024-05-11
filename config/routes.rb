@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # get 'members/update'
   # get 'members/destroy'
   resources :companies
+   get 'company' => 'companies#index'
   devise_for :users # , :controllers => {:registrations => "users/registrations"}
   resources :friends
   
@@ -28,6 +29,8 @@ Rails.application.routes.draw do
   get "cashier" => "cashier#index"
   get "manager" => "manager#index"
   get "cart"  => "carts#show"
+  #get "invoice"  => "carts#invoice"
+  get "categories" => "categories#index"
   # get "category" => "category#index"
   resources :categories, only: [:show]
   resources :products, only: [:show]
